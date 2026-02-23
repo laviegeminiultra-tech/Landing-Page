@@ -47,7 +47,7 @@ export default function EvidenceSection() {
                                         <td>{row.label}</td>
                                         <td className="font-mono">{row.charged}</td>
                                         <td className="font-mono">{row.actual}</td>
-                                        <td className="font-mono evidence__diff"><span className="amount-shake">{row.diff}</span></td>
+                                        <td className="font-mono evidence__diff">{row.diff}</td>
                                     </tr>
                                 ))}
                             </tbody>

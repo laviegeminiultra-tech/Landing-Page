@@ -49,12 +49,6 @@ export default function PricingSection() {
     return (
         <section className="pricing section" id="pricing" ref={ref}>
             <div className="container">
-                {/* Limited capacity badge (Round 11) */}
-                <div className={`pricing__scarcity fade-in-up ${isVisible ? 'visible' : ''}`}>
-                    <span className="pricing__scarcity-dot" />
-                    <span>נותרו <span className="font-mono">12</span> ביקורות החודש</span>
-                </div>
-
                 {/* ROI Bar */}
                 <div className={`pricing__roi fade-in-up ${isVisible ? 'visible' : ''}`}>
                     <span>ממוצע חיוב יתר: <span className="font-mono pricing__roi-num">₪45,000+</span></span>

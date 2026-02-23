@@ -83,11 +83,11 @@ export default function BlindTeaserSection() {
                         <span className="font-mono">₪0</span>
                         <span className="teaser__card-separator">|</span>
                         <span className="teaser__card-label">חויב בפועל:</span>
-                        <span className="font-mono amount-shake" style={{ color: 'var(--accent-red)' }}>₪4,200</span>
+                        <span className="font-mono" style={{ color: 'var(--accent-red)' }}>₪4,200</span>
                     </div>
                     <div className="teaser__card-row">
                         <span className="teaser__card-label">חריגה:</span>
-                        <span className="font-mono amount-shake" style={{ color: 'var(--accent-red)', fontWeight: 600 }}>+₪4,200</span>
+                        <span className="font-mono" style={{ color: 'var(--accent-red)', fontWeight: 600 }}>+₪4,200</span>
                     </div>
                     <div className="teaser__card-row">
                         <span className="teaser__card-label">חומרה:</span>

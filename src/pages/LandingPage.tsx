@@ -12,9 +12,6 @@ import FinalCtaSection from '../components/FinalCtaSection'
 import Footer from '../components/Footer'
 import StickyMobileCta from '../components/StickyMobileCta'
 import InteractiveBackground from '../components/InteractiveBackground'
-import SocialProofTicker from '../components/SocialProofTicker'
-import ExitIntentPopup from '../components/ExitIntentPopup'
-
 export default function LandingPage() {
     return (
         <>
@@ -40,8 +37,6 @@ export default function LandingPage() {
             </main>
             <Footer />
             <StickyMobileCta />
-            <SocialProofTicker />
-            <ExitIntentPopup />
         </>
     )
 }
