@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useMemo } from 'react'
 
 export function useInView(options?: IntersectionObserverInit) {
-    const ref = useRef<HTMLDivElement>(null)
+    const ref = useRef<HTMLElement>(null)
     const [isVisible, setIsVisible] = useState(false)
 
     // Memoize options to prevent re-creating observer on every render

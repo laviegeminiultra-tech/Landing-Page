@@ -93,13 +93,6 @@ export default function HeroSection() {
                     </span>
                 </div>
 
-                {/* Client Count */}
-                <div className="hero__clients fade-in-up visible delay-3">
-                    <span className="font-mono hero__clients-num">
-                        מעל <CountUp target={2400} duration={2500} /> חוזים נבדקו
-                    </span>
-                </div>
-
                 <div className="hero__cta-wrap fade-in-up visible delay-3">
                     <button className="btn btn-primary hero__cta" id="hero-cta" onClick={scrollToFinalCta}>
                         גלו כמה אתם מפסידים ←

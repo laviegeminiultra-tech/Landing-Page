@@ -59,7 +59,7 @@ export default function PricingSection() {
                 </div>
 
                 <h2 className={`pricing__title fade-in-up ${isVisible ? 'visible' : ''}`} style={{ animationDelay: '0.2s' }}>
-                    מצאנו את הכסף. איך תרצו לגבות אותו?
+                    הכסף שלכם מחכה. בחרו מסלול גבייה.
                 </h2>
 
                 <div className="pricing__grid">

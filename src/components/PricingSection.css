@@ -55,7 +55,7 @@
     gap: var(--space-3);
     max-width: 800px;
     margin-inline: auto;
-    padding-block-start: var(--space-2);
+    padding-block-start: 24px;
 }
 
 .pricing__card {
@@ -69,9 +69,8 @@
 
 /* Pricing Card Hover — subtle border brightening only */
 .pricing__card:hover {
-    border-color: rgba(59, 130, 246, 0.4);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.08);
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.08);
 }
 
 .pricing__card--recommended {
@@ -82,7 +81,7 @@
 
 .pricing__card--recommended:hover {
     border-color: rgba(16, 185, 129, 0.5);
-    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.1);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
 }
 
 .pricing__badge {
@@ -187,14 +186,6 @@
     .pricing__card--recommended {
         transform: none;
         order: -1;
-    }
-
-    .pricing__card:hover {
-        transform: none;
-    }
-
-    .pricing__card--recommended:hover {
-        transform: none;
     }
 }
 

@@ -40,16 +40,6 @@
     display: inline-block;
 }
 
-/* Client Count */
-.hero__clients {
-    margin-block-end: var(--space-3);
-}
-
-.hero__clients-num {
-    font-size: 16px;
-    color: var(--text-secondary);
-}
-
 .hero__cta-wrap {
     display: flex;
     flex-direction: column;
