@@ -1,0 +1,26 @@
+.not-found {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    text-align: center;
+    padding: var(--space-3);
+}
+
+.not-found__code {
+    font-size: 120px;
+    color: var(--accent-blue);
+    line-height: 1;
+}
+
+.not-found__text {
+    font-size: 18px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.not-found__btn {
+    margin-block-start: var(--space-2);
+}

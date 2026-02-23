@@ -1,0 +1,123 @@
+.teaser__title {
+    text-align: center;
+    margin-block-end: var(--space-6);
+}
+
+.teaser__visible-card {
+    max-width: 600px;
+    margin-inline: auto;
+    margin-block-end: var(--space-4);
+    border-color: var(--accent-green);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.teaser__card-badge {
+    font-family: var(--font-hebrew);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 4px 12px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-self: flex-start;
+}
+
+.teaser__card-badge--free {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--accent-green);
+}
+
+.teaser__card-divider {
+    height: 1px;
+    background: var(--border-subtle);
+    margin-block: var(--space-1);
+}
+
+.teaser__card-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    align-items: baseline;
+}
+
+.teaser__card-label {
+    color: var(--text-muted);
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.teaser__card-separator {
+    color: var(--border-subtle);
+    margin-inline: 4px;
+}
+
+/* Blurred section */
+.teaser__blurred-wrap {
+    position: relative;
+    max-width: 600px;
+    margin-inline: auto;
+}
+
+.teaser__blurred-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.teaser__blurred-card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    user-select: none;
+}
+
+/* Overlay */
+.teaser__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, rgba(11, 22, 40, 0.3), rgba(11, 22, 40, 0.95));
+    border-radius: var(--card-radius);
+    z-index: 2;
+}
+
+.teaser__overlay-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.teaser__lock-icon {
+    font-size: 32px;
+}
+
+.teaser__overlay-text {
+    font-family: var(--font-hebrew);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text-primary);
+}
+
+.teaser__overlay-amount {
+    font-size: 24px;
+    color: var(--accent-green);
+}
+
+.teaser__overlay-cta {
+    margin-block-start: var(--space-1);
+}
+
+@media (max-width: 768px) {
+
+    .teaser__visible-card,
+    .teaser__blurred-wrap {
+        max-width: 100%;
+    }
+}

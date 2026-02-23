@@ -1,0 +1,38 @@
+.final-cta {
+    position: relative;
+    text-align: center;
+}
+
+.final-cta__border {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    height: 2px;
+    background: linear-gradient(to left, var(--accent-blue), var(--accent-green));
+}
+
+.final-cta__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.final-cta__title {
+    max-width: 600px;
+}
+
+.final-cta__btn {
+    min-width: 300px;
+}
+
+.final-cta__contact {
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .final-cta__btn {
+        width: 100%;
+        min-width: auto;
+    }
+}

@@ -1,0 +1,125 @@
+.engine__title {
+    text-align: center;
+    margin-block-end: var(--space-8);
+}
+
+.engine__pipeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+    position: relative;
+    padding-block-start: var(--space-2);
+}
+
+/* Pipeline lines */
+.engine__line {
+    position: absolute;
+    pointer-events: none;
+}
+
+.engine__line--desktop {
+    inset-block-start: 36px;
+    inset-inline-start: 10%;
+    width: 80%;
+    height: 4px;
+    /* Flip SVG so dashoffset animation fills right-to-left in RTL */
+    transform: scaleX(-1);
+}
+
+.engine__line--mobile {
+    display: none;
+}
+
+.engine__line-fill {
+    transition: stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.engine__line--active .engine__line-fill {
+    stroke-dashoffset: 0;
+}
+
+/* Steps */
+.engine__step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-1);
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.engine__step--active {
+    animation: engineStepIn 0.5s ease-out forwards;
+}
+
+@keyframes engineStepIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.engine__icon {
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    color: var(--accent-blue);
+    margin-block-end: var(--space-2);
+    transition: border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.engine__step--active .engine__icon {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+.engine__label {
+    font-family: var(--font-hebrew);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text-primary);
+}
+
+.engine__desc {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 200px;
+}
+
+@media (max-width: 768px) {
+    .engine__pipeline {
+        grid-template-columns: 1fr;
+        gap: var(--space-5);
+        padding-inline-start: var(--space-8);
+    }
+
+    .engine__line--desktop {
+        display: none;
+    }
+
+    .engine__line--mobile {
+        display: block;
+        position: absolute;
+        inset-inline-start: 36px;
+        inset-block-start: 36px;
+        width: 4px;
+        height: calc(100% - 72px);
+    }
+
+    .engine__step {
+        align-items: flex-start;
+        text-align: start;
+    }
+
+    .engine__desc {
+        max-width: none;
+    }
+}

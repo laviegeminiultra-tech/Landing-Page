@@ -1,0 +1,48 @@
+.agitation__title {
+    text-align: center;
+    margin-block-end: var(--space-2);
+}
+
+.agitation__intro {
+    text-align: center;
+    font-size: 17px;
+    max-width: 700px;
+    margin-inline: auto;
+    margin-block-end: var(--space-6);
+    line-height: 1.8;
+}
+
+.agitation__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3);
+}
+
+.agitation__card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.agitation__icon {
+    margin-block-end: var(--space-1);
+}
+
+.agitation__card-title {
+    font-family: var(--font-hebrew);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--accent-red);
+}
+
+.agitation__card-body {
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .agitation__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-2);
+    }
+}

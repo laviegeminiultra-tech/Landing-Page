@@ -1,0 +1,9 @@
+.footer {
+    padding-block: var(--space-4);
+    border-block-start: 1px solid var(--border-subtle);
+}
+
+.footer__text {
+    text-align: center;
+    font-size: 13px;
+}
