@@ -21,12 +21,15 @@
     height: 64px;
 }
 
-.navbar__logo-text {
-    font-family: var(--font-latin);
-    font-weight: 500;
-    font-size: 20px;
-    color: var(--text-primary);
-    letter-spacing: -0.5px;
+.navbar__logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.navbar__logo-img {
+    height: 40px;
+    width: auto;
 }
 
 .navbar__links {

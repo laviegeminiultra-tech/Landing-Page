@@ -12,9 +12,9 @@ export default function Navbar() {
     return (
         <nav className={`navbar ${isScrolled ? 'navbar--glass' : ''}`}>
             <div className="navbar__inner container">
-                <div className="navbar__logo">
-                    <span className="navbar__logo-text">OpexGuard</span>
-                </div>
+                <a href="#hero" className="navbar__logo" onClick={(e) => { e.preventDefault(); scrollTo('hero') }}>
+                    <img src="/assets/logo-horizontal-dark.svg" alt="OpexGuard" className="navbar__logo-img" />
+                </a>
                 <div className="navbar__links">
                     <button className="navbar__link" onClick={() => scrollTo('engine')}>
                         איך זה עובד
