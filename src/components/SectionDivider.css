@@ -1,0 +1,8 @@
+/* SectionDivider replaced with simple spacing */
+.section-divider {
+    height: 1px;
+    background: var(--border-subtle);
+    margin-inline: auto;
+    max-width: var(--max-width);
+    opacity: 0.5;
+}

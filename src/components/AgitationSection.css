@@ -41,7 +41,7 @@
     min-height: 4.5em;
 }
 
-/* Typewriter cursor (Round 4) */
+/* Typewriter cursor */
 .typewriter-cursor {
     display: inline-block;
     color: var(--accent-blue);

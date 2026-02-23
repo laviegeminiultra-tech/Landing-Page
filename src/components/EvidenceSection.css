@@ -28,25 +28,23 @@
     transform: translateX(0);
 }
 
-/* Scan line (Round 3) */
+/* Scan line — very subtle, single sweep */
 .evidence__scan-line {
     position: absolute;
     inset-block-start: 0;
-    width: 3px;
+    width: 2px;
     height: 100%;
     background: linear-gradient(
         to bottom,
         transparent,
-        var(--accent-blue),
-        rgba(59, 130, 246, 0.5),
+        rgba(59, 130, 246, 0.15),
+        rgba(59, 130, 246, 0.08),
         transparent
     );
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.2);
     animation: scanSweep 2s ease-in-out 0.5s 1 forwards;
     opacity: 0;
     z-index: 2;
     pointer-events: none;
-    will-change: transform, opacity;
 }
 
 @keyframes scanSweep {

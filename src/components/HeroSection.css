@@ -9,85 +9,6 @@
     padding-block-start: 80px;
 }
 
-.hero__glow {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    transition: background 0.3s ease;
-}
-
-/* Number Rain (Round 7) */
-.hero__rain {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 0;
-}
-
-.hero__rain-col {
-    position: absolute;
-    top: -100%;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    font-size: 11px;
-    color: var(--text-primary);
-    animation: rainFall linear infinite;
-    will-change: transform;
-    white-space: nowrap;
-}
-
-@keyframes rainFall {
-    0% {
-        transform: translateY(-100%);
-    }
-    100% {
-        transform: translateY(200vh);
-    }
-}
-
-/* Background number grid */
-.hero__grid {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    justify-content: space-around;
-    opacity: 0.04;
-    pointer-events: none;
-    font-family: var(--font-mono);
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--text-primary);
-    overflow: hidden;
-}
-
-.hero__grid-col {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    animation: gridFloat 30s linear infinite;
-}
-
-.hero__grid-col--offset {
-    animation-delay: -10s;
-}
-
-.hero__grid-col--offset2 {
-    animation-delay: -20s;
-}
-
-@keyframes gridFloat {
-    0% {
-        transform: translateY(0);
-    }
-
-    100% {
-        transform: translateY(-50%);
-    }
-}
-
 /* Content */
 .hero__content {
     text-align: center;
@@ -119,38 +40,7 @@
     display: inline-block;
 }
 
-/* Money Drain Counter (Round 1) */
-.hero__drain {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: 6px;
-    margin-block-end: var(--space-2);
-    padding: 12px 24px;
-    background: rgba(239, 68, 68, 0.06);
-    border: 1px solid rgba(239, 68, 68, 0.15);
-    border-radius: 10px;
-    animation: fadeInUp 1.2s ease-out forwards;
-    animation-delay: 1.8s;
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.hero__drain-label {
-    font-family: var(--font-hebrew);
-    font-size: 14px;
-    color: var(--accent-red);
-    opacity: 0.8;
-}
-
-.hero__drain-amount {
-    font-size: 24px;
-    color: var(--accent-red);
-    will-change: text-shadow;
-    transition: text-shadow 0.3s ease;
-}
-
-/* Client Count (Round 20) */
+/* Client Count */
 .hero__clients {
     margin-block-end: var(--space-3);
 }
@@ -177,7 +67,7 @@
     text-align: center;
 }
 
-/* Trust Bar (Round 19) */
+/* Trust Bar */
 .hero__trust-bar {
     display: flex;
     flex-wrap: wrap;
@@ -228,20 +118,6 @@
         width: 100%;
     }
 
-    .hero__drain {
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 10px 16px;
-    }
-
-    .hero__drain-amount {
-        font-size: 20px;
-    }
-
-    .hero__drain-label {
-        font-size: 13px;
-    }
-
     .hero__trust-bar {
         gap: 8px;
     }
@@ -252,16 +128,5 @@
 
     .hero__trust-item {
         font-size: 12px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .hero__rain {
-        display: none;
-    }
-
-    .hero__drain {
-        opacity: 1;
-        transform: none;
     }
 }

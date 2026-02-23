@@ -36,7 +36,7 @@ const cards = [
     },
 ]
 
-/* Typewriter effect component (Round 4) */
+/* Typewriter effect component */
 function Typewriter({ text, active, delay = 0 }: { text: string; active: boolean; delay?: number }) {
     const [displayText, setDisplayText] = useState('')
     const [showCursor, setShowCursor] = useState(false)

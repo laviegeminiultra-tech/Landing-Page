@@ -27,18 +27,18 @@ export default function InteractiveBackground() {
         const handleMouseMove = (e: MouseEvent) => {
             mouseRef.current = { x: e.clientX, y: e.clientY, active: true }
 
-            // Spawn subtle particles
-            if (Math.random() > 0.65) {
+            // Spawn subtle particles — noticeable but restrained
+            if (Math.random() > 0.75) {
                 particlesRef.current.push({
-                    x: e.clientX + (Math.random() - 0.5) * 50,
-                    y: e.clientY + (Math.random() - 0.5) * 50,
-                    opacity: 0.12 + Math.random() * 0.08,
-                    scale: 0.5 + Math.random() * 1.5,
+                    x: e.clientX + (Math.random() - 0.5) * 40,
+                    y: e.clientY + (Math.random() - 0.5) * 40,
+                    opacity: 0.04 + Math.random() * 0.02,
+                    scale: 0.4 + Math.random() * 1.0,
                     born: Date.now(),
                 })
             }
-            if (particlesRef.current.length > 25) {
-                particlesRef.current = particlesRef.current.slice(-18)
+            if (particlesRef.current.length > 15) {
+                particlesRef.current = particlesRef.current.slice(-12)
             }
         }
 
@@ -48,16 +48,16 @@ export default function InteractiveBackground() {
             ctx.clearRect(0, 0, canvas.width, canvas.height)
             const now = Date.now()
 
-            // Mouse glow
+            // Mouse glow — visible but subtle
             if (mouseRef.current.active) {
                 const { x, y } = mouseRef.current
-                const g = ctx.createRadialGradient(x, y, 0, x, y, 250)
-                g.addColorStop(0, 'rgba(59, 130, 246, 0.06)')
+                const g = ctx.createRadialGradient(x, y, 0, x, y, 180)
+                g.addColorStop(0, 'rgba(59, 130, 246, 0.05)')
                 g.addColorStop(0.5, 'rgba(59, 130, 246, 0.02)')
                 g.addColorStop(1, 'transparent')
                 ctx.fillStyle = g
                 ctx.beginPath()
-                ctx.arc(x, y, 250, 0, Math.PI * 2)
+                ctx.arc(x, y, 180, 0, Math.PI * 2)
                 ctx.fill()
             }
 

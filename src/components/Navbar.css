@@ -21,37 +21,12 @@
     height: 64px;
 }
 
-/* Logo shimmer (Round 18) */
 .navbar__logo-text {
     font-family: var(--font-latin);
     font-weight: 500;
     font-size: 20px;
     color: var(--text-primary);
     letter-spacing: -0.5px;
-    position: relative;
-    display: inline-block;
-    background: linear-gradient(
-        90deg,
-        var(--text-primary) 0%,
-        var(--text-primary) 40%,
-        var(--accent-blue) 50%,
-        var(--text-primary) 60%,
-        var(--text-primary) 100%
-    );
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: logoShimmer 4s ease-in-out infinite;
-}
-
-@keyframes logoShimmer {
-    0%, 80%, 100% {
-        background-position: 200% center;
-    }
-    40% {
-        background-position: -200% center;
-    }
 }
 
 .navbar__links {
@@ -78,7 +53,6 @@
 
 .navbar__cta {
     margin-inline-start: var(--space-1);
-    animation: none !important;
 }
 
 @media (max-width: 768px) {
@@ -93,13 +67,5 @@
 
     .navbar__cta {
         display: none;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .navbar__logo-text {
-        animation: none;
-        background: none;
-        -webkit-text-fill-color: var(--text-primary);
     }
 }

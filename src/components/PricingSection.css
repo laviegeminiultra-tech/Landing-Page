@@ -55,6 +55,7 @@
     gap: var(--space-3);
     max-width: 800px;
     margin-inline: auto;
+    padding-block-start: var(--space-2);
 }
 
 .pricing__card {
@@ -62,66 +63,26 @@
     flex-direction: column;
     gap: var(--space-2);
     position: relative;
+    overflow: visible;
     transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-/* Pricing Card Hover Glow (Round 12) */
-.pricing__card::after {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: var(--card-radius);
-    background: conic-gradient(
-        from var(--card-glow-angle, 0deg),
-        transparent 0deg,
-        var(--accent-blue) 30deg,
-        transparent 60deg,
-        transparent 360deg
-    );
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    will-change: opacity;
-}
-
-.pricing__card:hover::after {
-    opacity: 1;
-    animation: cardGlowRotate 3s linear infinite;
-}
-
-@keyframes cardGlowRotate {
-    to {
-        --card-glow-angle: 360deg;
-    }
-}
-
-/* Fallback for browsers that don't support @property */
-@supports not (background: conic-gradient(from 0deg, red, blue)) {
-    .pricing__card:hover::after {
-        background: linear-gradient(135deg, var(--accent-blue), transparent, var(--accent-green));
-        opacity: 0.3;
-    }
-}
-
+/* Pricing Card Hover — subtle border brightening only */
 .pricing__card:hover {
+    border-color: rgba(59, 130, 246, 0.4);
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
+    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.08);
 }
 
 .pricing__card--recommended {
     border-color: var(--accent-green);
     transform: translateY(-8px);
-    box-shadow: 0 0 30px rgba(16, 185, 129, 0.1);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.06);
 }
 
-.pricing__card--recommended::after {
-    background: conic-gradient(
-        from var(--card-glow-angle, 0deg),
-        transparent 0deg,
-        var(--accent-green) 30deg,
-        transparent 60deg,
-        transparent 360deg
-    );
+.pricing__card--recommended:hover {
+    border-color: rgba(16, 185, 129, 0.5);
+    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.1);
 }
 
 .pricing__badge {
@@ -135,6 +96,7 @@
     font-size: 12px;
     padding: 4px 16px;
     border-radius: 20px;
+    z-index: 2;
 }
 
 .pricing__card-name {
@@ -171,7 +133,7 @@
     gap: 8px;
 }
 
-/* Stagger-reveal (Round 17) */
+/* Stagger-reveal */
 .pricing__feature-item {
     opacity: 0;
     transform: translateX(10px);
@@ -188,7 +150,7 @@
     }
 }
 
-/* Animated SVG Checkmark (Round 22) */
+/* Animated SVG Checkmark */
 .pricing__check-svg {
     flex-shrink: 0;
 }
