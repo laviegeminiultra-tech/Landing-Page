@@ -1,6 +1,7 @@
 .hero {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
@@ -14,6 +15,37 @@
     pointer-events: none;
     z-index: 0;
     transition: background 0.3s ease;
+}
+
+/* Number Rain (Round 7) */
+.hero__rain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.hero__rain-col {
+    position: absolute;
+    top: -100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    font-size: 11px;
+    color: var(--text-primary);
+    animation: rainFall linear infinite;
+    will-change: transform;
+    white-space: nowrap;
+}
+
+@keyframes rainFall {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(200vh);
+    }
 }
 
 /* Background number grid */
@@ -78,13 +110,54 @@
 }
 
 .hero__money {
-    margin-block-end: var(--space-5);
+    margin-block-end: var(--space-3);
 }
 
 .hero__money-text {
     font-size: 28px;
     color: var(--accent-green);
     display: inline-block;
+}
+
+/* Money Drain Counter (Round 1) */
+.hero__drain {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 6px;
+    margin-block-end: var(--space-2);
+    padding: 12px 24px;
+    background: rgba(239, 68, 68, 0.06);
+    border: 1px solid rgba(239, 68, 68, 0.15);
+    border-radius: 10px;
+    animation: fadeInUp 1.2s ease-out forwards;
+    animation-delay: 1.8s;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.hero__drain-label {
+    font-family: var(--font-hebrew);
+    font-size: 14px;
+    color: var(--accent-red);
+    opacity: 0.8;
+}
+
+.hero__drain-amount {
+    font-size: 24px;
+    color: var(--accent-red);
+    will-change: text-shadow;
+    transition: text-shadow 0.3s ease;
+}
+
+/* Client Count (Round 20) */
+.hero__clients {
+    margin-block-end: var(--space-3);
+}
+
+.hero__clients-num {
+    font-size: 16px;
+    color: var(--text-secondary);
 }
 
 .hero__cta-wrap {
@@ -104,6 +177,39 @@
     text-align: center;
 }
 
+/* Trust Bar (Round 19) */
+.hero__trust-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: var(--space-2) var(--space-3);
+    margin-block-start: var(--space-5);
+    width: 100%;
+    max-width: 700px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero__trust-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.hero__trust-check {
+    color: var(--accent-green);
+    font-weight: 700;
+}
+
+.hero__trust-sep {
+    color: var(--text-muted);
+    font-size: 16px;
+}
+
 @media (max-width: 768px) {
     .hero {
         min-height: auto;
@@ -120,5 +226,42 @@
 
     .hero__cta {
         width: 100%;
+    }
+
+    .hero__drain {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px 16px;
+    }
+
+    .hero__drain-amount {
+        font-size: 20px;
+    }
+
+    .hero__drain-label {
+        font-size: 13px;
+    }
+
+    .hero__trust-bar {
+        gap: 8px;
+    }
+
+    .hero__trust-sep {
+        display: none;
+    }
+
+    .hero__trust-item {
+        font-size: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero__rain {
+        display: none;
+    }
+
+    .hero__drain {
+        opacity: 1;
+        transform: none;
     }
 }

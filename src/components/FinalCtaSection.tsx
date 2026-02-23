@@ -8,7 +8,6 @@ export default function FinalCtaSection() {
     const [showModal, setShowModal] = useState(false)
 
     const handleDesktopCta = () => {
-        // On desktop, scroll up to Hero to start the flow
         document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })
     }
 

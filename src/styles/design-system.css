@@ -134,6 +134,36 @@ h2 {
   padding-inline: var(--space-3);
 }
 
+/* === Gradient Mesh Background (Round 7) === */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(59, 130, 246, 0.06), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 60%, rgba(139, 92, 246, 0.04), transparent),
+    radial-gradient(ellipse 70% 60% at 50% 20%, rgba(16, 185, 129, 0.03), transparent);
+  animation: meshShift 20s ease-in-out infinite alternate;
+  will-change: background-position;
+  pointer-events: none;
+}
+
+@keyframes meshShift {
+  0% {
+    background-position: 0% 0%, 100% 100%, 50% 0%;
+  }
+  33% {
+    background-position: 20% 30%, 80% 70%, 40% 30%;
+  }
+  66% {
+    background-position: 40% 10%, 60% 90%, 60% 10%;
+  }
+  100% {
+    background-position: 10% 50%, 90% 50%, 50% 50%;
+  }
+}
+
 /* === Buttons === */
 .btn {
   display: inline-flex;
@@ -195,12 +225,86 @@ h2 {
   padding-inline: var(--space-2);
 }
 
+/* === Breathing CTA Buttons (Round 8) === */
+.btn-primary,
+.btn-green {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.btn-primary:hover,
+.btn-green:hover {
+  animation: none;
+  transform: translateY(-2px);
+}
+
+/* === Haptic button feedback on mobile (Round 25) === */
+@media (max-width: 768px) {
+  .btn-primary:active,
+  .btn-green:active,
+  .btn-navy:active {
+    transform: scale(0.95) !important;
+    transition: transform 0.08s ease-out;
+  }
+}
+
 /* === Cards === */
 .card {
-  background-color: var(--bg-card);
+  background-color: rgba(5, 11, 20, 0.7);
   border: 1px solid var(--border-subtle);
   border-radius: var(--card-radius);
   padding: var(--space-4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Glass card shine effect on hover (Round 9/14) */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.03) 45%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.03) 55%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card:hover::before {
+  transform: translateX(100%);
+}
+
+.card:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* === Earthquake shake for red amounts (Round 10) === */
+.amount-shake {
+  display: inline-block;
+  animation: microShake 0.4s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes microShake {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(1px, -1px); }
+  50% { transform: translate(-1px, 1px); }
+  75% { transform: translate(1px, 0); }
 }
 
 /* === Animations === */
@@ -232,6 +336,47 @@ h2 {
   animation-delay: 0.9s;
 }
 
+.fade-in-up.delay-4 {
+  animation-delay: 1.2s;
+}
+
+.fade-in-up.delay-5 {
+  animation-delay: 1.5s;
+}
+
+/* === Section Dividers (Round 15/23) === */
+.section-divider {
+  position: relative;
+  height: 60px;
+  overflow: hidden;
+  margin-block: -1px;
+}
+
+.section-divider svg {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  width: 100%;
+  height: 60px;
+}
+
+/* === Scroll Progress Bar (Round 10) === */
+.scroll-progress {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  height: 3px;
+  background: var(--accent-blue);
+  z-index: 1001;
+  transform-origin: right;
+  transition: background-color 0.3s ease;
+  will-change: width;
+}
+
+.scroll-progress--green {
+  background: var(--accent-green);
+}
+
 /* === Reduced Motion === */
 @media (prefers-reduced-motion: reduce) {
 
@@ -246,6 +391,19 @@ h2 {
   .fade-in-up {
     opacity: 1;
     transform: none;
+  }
+
+  body::before {
+    animation: none !important;
+  }
+
+  .amount-shake {
+    animation: none !important;
+  }
+
+  .btn-primary,
+  .btn-green {
+    animation: none !important;
   }
 }
 
@@ -271,5 +429,13 @@ h2 {
   .btn-green,
   .btn-navy {
     width: 100%;
+  }
+
+  .section-divider {
+    height: 30px;
+  }
+
+  .section-divider svg {
+    height: 30px;
   }
 }

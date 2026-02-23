@@ -1,4 +1,5 @@
 import { useInView } from '../hooks/useInView'
+import { useState, useEffect, useRef } from 'react'
 import './AgitationSection.css'
 
 const cards = [
@@ -35,6 +36,47 @@ const cards = [
     },
 ]
 
+/* Typewriter effect component (Round 4) */
+function Typewriter({ text, active, delay = 0 }: { text: string; active: boolean; delay?: number }) {
+    const [displayText, setDisplayText] = useState('')
+    const [showCursor, setShowCursor] = useState(false)
+    const indexRef = useRef(0)
+
+    useEffect(() => {
+        if (!active) return
+        setDisplayText('')
+        indexRef.current = 0
+        setShowCursor(false)
+
+        const startTimeout = setTimeout(() => {
+            setShowCursor(true)
+            const interval = setInterval(() => {
+                if (indexRef.current < text.length) {
+                    indexRef.current++
+                    setDisplayText(text.slice(0, indexRef.current))
+                } else {
+                    clearInterval(interval)
+                    // Hide cursor after typing is done
+                    setTimeout(() => setShowCursor(false), 1000)
+                }
+            }, 25)
+
+            return () => clearInterval(interval)
+        }, delay)
+
+        return () => clearTimeout(startTimeout)
+    }, [active, text, delay])
+
+    if (!active) return null
+
+    return (
+        <span>
+            {displayText}
+            {showCursor && <span className="typewriter-cursor">|</span>}
+        </span>
+    )
+}
+
 export default function AgitationSection() {
     const { ref, isVisible } = useInView()
 
@@ -59,7 +101,9 @@ export default function AgitationSection() {
                         >
                             <div className="agitation__icon">{card.icon}</div>
                             <h3 className="agitation__card-title">{card.title}</h3>
-                            <p className="agitation__card-body text-secondary">{card.body}</p>
+                            <p className="agitation__card-body text-secondary">
+                                <Typewriter text={card.body} active={isVisible} delay={600 + i * 300} />
+                            </p>
                         </div>
                     ))}
                 </div>

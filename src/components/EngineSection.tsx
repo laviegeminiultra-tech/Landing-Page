@@ -59,16 +59,35 @@ export default function EngineSection() {
                 </h2>
 
                 <div className="engine__pipeline">
-                    {/* SVG Pipeline line */}
+                    {/* SVG Pipeline line with data pulse */}
                     <svg className={`engine__line engine__line--desktop ${isVisible ? 'engine__line--active' : ''}`} viewBox="0 0 1000 4" preserveAspectRatio="none" aria-hidden="true">
                         <line x1="0" y1="2" x2="1000" y2="2" stroke="var(--border-subtle)" strokeWidth="2" />
                         <line x1="0" y1="2" x2="1000" y2="2" stroke="var(--accent-blue)" strokeWidth="2"
                             strokeDasharray="1000" strokeDashoffset="1000" className="engine__line-fill" />
+                        {/* Data pulse dots (Round 5) */}
+                        {isVisible && (
+                            <>
+                                <circle r="4" fill="var(--accent-blue)" opacity="0.9" className="engine__pulse-dot">
+                                    <animateMotion dur="3s" begin="1s" repeatCount="indefinite" path="M0,2 L1000,2" />
+                                </circle>
+                                <circle r="3" fill="var(--accent-blue)" opacity="0.6" className="engine__pulse-dot">
+                                    <animateMotion dur="3s" begin="2s" repeatCount="indefinite" path="M0,2 L1000,2" />
+                                </circle>
+                                <circle r="5" fill="var(--accent-blue)" opacity="0.3" className="engine__pulse-dot">
+                                    <animateMotion dur="3s" begin="0.5s" repeatCount="indefinite" path="M0,2 L1000,2" />
+                                </circle>
+                            </>
+                        )}
                     </svg>
                     <svg className={`engine__line engine__line--mobile ${isVisible ? 'engine__line--active' : ''}`} viewBox="0 0 4 600" preserveAspectRatio="none" aria-hidden="true">
                         <line x1="2" y1="0" x2="2" y2="600" stroke="var(--border-subtle)" strokeWidth="2" />
                         <line x1="2" y1="0" x2="2" y2="600" stroke="var(--accent-blue)" strokeWidth="2"
                             strokeDasharray="600" strokeDashoffset="600" className="engine__line-fill" />
+                        {isVisible && (
+                            <circle r="3" fill="var(--accent-blue)" opacity="0.8" className="engine__pulse-dot">
+                                <animateMotion dur="3s" begin="1s" repeatCount="indefinite" path="M2,0 L2,600" />
+                            </circle>
+                        )}
                     </svg>
 
                     {steps.map((step, i) => (

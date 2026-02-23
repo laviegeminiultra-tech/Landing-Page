@@ -20,8 +20,11 @@ export default function EvidenceSection() {
                 </h2>
 
                 <div className="evidence__visual">
-                    {/* Excel mockup */}
+                    {/* Excel mockup with scan effect */}
                     <div className={`evidence__excel ${isVisible ? 'evidence__excel--active' : ''}`}>
+                        {/* Scan line (Round 3) */}
+                        {isVisible && <div className="evidence__scan-line" aria-hidden="true" />}
+
                         <div className="evidence__excel-header">
                             <div className="evidence__excel-dot" />
                             <div className="evidence__excel-dot evidence__excel-dot--yellow" />
@@ -44,7 +47,7 @@ export default function EvidenceSection() {
                                         <td>{row.label}</td>
                                         <td className="font-mono">{row.charged}</td>
                                         <td className="font-mono">{row.actual}</td>
-                                        <td className="font-mono evidence__diff">{row.diff}</td>
+                                        <td className="font-mono evidence__diff"><span className="amount-shake">{row.diff}</span></td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -97,6 +100,16 @@ export default function EvidenceSection() {
                         </div>
                     </div>
                 </div>
+
+                {/* Testimonial whisper (Round 21) */}
+                <blockquote className={`evidence__testimonial fade-in-up ${isVisible ? 'visible' : ''}`} style={{ animationDelay: '0.8s' }}>
+                    <p className="evidence__testimonial-text">
+                        &ldquo;הנהלת חשבונות שלנו לא תפסה את זה 3 שנים.&rdquo;
+                    </p>
+                    <cite className="evidence__testimonial-cite">
+                        — סמנכ&quot;ל כספים, חברת <span className="font-latin">SaaS</span>, הרצליה
+                    </cite>
+                </blockquote>
 
                 <p className={`evidence__copy text-secondary fade-in-up ${isVisible ? 'visible' : ''}`} style={{ animationDelay: '0.6s' }}>
                     כל שקל בדוח מקושר ישירות לפסקה המדויקת בחוזה המקור.

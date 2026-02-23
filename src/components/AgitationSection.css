@@ -38,11 +38,36 @@
 .agitation__card-body {
     font-size: 15px;
     line-height: 1.7;
+    min-height: 4.5em;
+}
+
+/* Typewriter cursor (Round 4) */
+.typewriter-cursor {
+    display: inline-block;
+    color: var(--accent-blue);
+    font-weight: 300;
+    animation: cursorBlink 0.8s step-end infinite;
+    margin-inline-start: 2px;
+}
+
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 @media (max-width: 768px) {
     .agitation__grid {
         grid-template-columns: 1fr;
         gap: var(--space-2);
+    }
+
+    .agitation__card-body {
+        min-height: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .typewriter-cursor {
+        animation: none;
     }
 }

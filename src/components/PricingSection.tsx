@@ -1,12 +1,60 @@
 import { useInView } from '../hooks/useInView'
 import './PricingSection.css'
 
+/* Animated SVG Checkmark (Round 22) */
+function AnimatedCheck({ delay, isVisible }: { delay: number; isVisible: boolean }) {
+    return (
+        <svg
+            className={`pricing__check-svg ${isVisible ? 'pricing__check-svg--active' : ''}`}
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            style={{ animationDelay: `${delay}s` }}
+        >
+            <circle cx="10" cy="10" r="9" stroke="var(--accent-green)" strokeWidth="1.5" fill="rgba(16, 185, 129, 0.1)" />
+            <path
+                d="M6 10l3 3 5-6"
+                stroke="var(--accent-green)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeDasharray="20"
+                strokeDashoffset={isVisible ? '0' : '20'}
+                className="pricing__check-path"
+                style={{ transitionDelay: `${delay}s` }}
+            />
+        </svg>
+    )
+}
+
 export default function PricingSection() {
     const { ref, isVisible } = useInView()
+
+    const diyFeatures = [
+        'דוח ביקורת מלא',
+        <>חבילת ראיות <span className="font-latin">Excel</span></>,
+        'קישורים קריפטוגרפיים למקור',
+        'תבנית מכתב דרישה',
+    ]
+
+    const legalFeatures = [
+        'הכל מהמסלול העצמאי',
+        'מכתב התראה משפטי',
+        'הצעת פשרה (זיכוי שכר עתידי)',
+        'סירוב אישור השתק',
+        'ליווי מלא עד לגבייה',
+    ]
 
     return (
         <section className="pricing section" id="pricing" ref={ref}>
             <div className="container">
+                {/* Limited capacity badge (Round 11) */}
+                <div className={`pricing__scarcity fade-in-up ${isVisible ? 'visible' : ''}`}>
+                    <span className="pricing__scarcity-dot" />
+                    <span>נותרו <span className="font-mono">12</span> ביקורות החודש</span>
+                </div>
+
                 {/* ROI Bar */}
                 <div className={`pricing__roi fade-in-up ${isVisible ? 'visible' : ''}`}>
                     <span>ממוצע חיוב יתר: <span className="font-mono pricing__roi-num">₪45,000+</span></span>
@@ -28,10 +76,16 @@ export default function PricingSection() {
                             ₪1,500 <span className="pricing__card-vat">+ מע&quot;מ</span>
                         </div>
                         <ul className="pricing__features">
-                            <li><span className="pricing__check">✅</span> דוח ביקורת מלא</li>
-                            <li><span className="pricing__check">✅</span> חבילת ראיות <span className="font-latin">Excel</span></li>
-                            <li><span className="pricing__check">✅</span> קישורים קריפטוגרפיים למקור</li>
-                            <li><span className="pricing__check">✅</span> תבנית מכתב דרישה</li>
+                            {diyFeatures.map((feature, i) => (
+                                <li
+                                    key={i}
+                                    className={`pricing__feature-item ${isVisible ? 'pricing__feature-item--active' : ''}`}
+                                    style={{ animationDelay: `${0.6 + i * 0.1}s` }}
+                                >
+                                    <AnimatedCheck delay={0.7 + i * 0.15} isVisible={isVisible} />
+                                    <span>{feature}</span>
+                                </li>
+                            ))}
                         </ul>
                         <button className="btn btn-navy pricing__btn">
                             הפק דוח עכשיו →
@@ -46,11 +100,16 @@ export default function PricingSection() {
                             ₪2,500 <span className="pricing__card-vat">+ מע&quot;מ</span>
                         </div>
                         <ul className="pricing__features">
-                            <li><span className="pricing__check">✅</span> הכל מהמסלול העצמאי</li>
-                            <li><span className="pricing__check">✅</span> מכתב התראה משפטי</li>
-                            <li><span className="pricing__check">✅</span> הצעת פשרה (זיכוי שכר עתידי)</li>
-                            <li><span className="pricing__check">✅</span> סירוב אישור השתק</li>
-                            <li><span className="pricing__check">✅</span> ליווי מלא עד לגבייה</li>
+                            {legalFeatures.map((feature, i) => (
+                                <li
+                                    key={i}
+                                    className={`pricing__feature-item ${isVisible ? 'pricing__feature-item--active' : ''}`}
+                                    style={{ animationDelay: `${0.7 + i * 0.1}s` }}
+                                >
+                                    <AnimatedCheck delay={0.8 + i * 0.15} isVisible={isVisible} />
+                                    <span>{feature}</span>
+                                </li>
+                            ))}
                         </ul>
                         <button className="btn btn-green pricing__btn">
                             הפעל פרוטוקול תקיפה →

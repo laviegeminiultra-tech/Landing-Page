@@ -11,7 +11,6 @@ function CountUp({ target, duration = 2000 }: { target: number; duration?: numbe
 
         const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4)
 
-        // Start after a short delay so the hero text appears first
         const timeout = setTimeout(() => {
             const startTime = performance.now()
 
@@ -35,11 +34,100 @@ function CountUp({ target, duration = 2000 }: { target: number; duration?: numbe
             cancelled = true
             clearTimeout(timeout)
             cancelAnimationFrame(rafId)
-            setDisplay(0) // Reset on cleanup so re-mount restarts
+            setDisplay(0)
         }
     }, [target, duration])
 
     return <span>{display.toLocaleString()}</span>
+}
+
+/* Money Drain Counter - Round 1 */
+function MoneyDrain() {
+    const [amount, setAmount] = useState(0)
+    const startTimeRef = useRef(Date.now())
+    const ratePerMs = 45000 / 365 / 24 / 60 / 60 / 1000 // ~₪1.43/sec
+
+    useEffect(() => {
+        const tick = () => {
+            const elapsed = Date.now() - startTimeRef.current
+            setAmount(elapsed * ratePerMs)
+            rafRef.current = requestAnimationFrame(tick)
+        }
+        const rafRef = { current: requestAnimationFrame(tick) }
+        return () => cancelAnimationFrame(rafRef.current)
+    }, [])
+
+    // Glow intensity increases over time (caps at 30s)
+    const glowIntensity = Math.min(amount / 50, 1)
+
+    return (
+        <div className="hero__drain" aria-live="polite" aria-atomic="true">
+            <span className="hero__drain-label">₪</span>
+            <span
+                className="hero__drain-amount font-mono"
+                style={{
+                    textShadow: `0 0 ${10 + glowIntensity * 20}px rgba(239, 68, 68, ${0.3 + glowIntensity * 0.4})`,
+                }}
+            >
+                {amount.toFixed(2)}
+            </span>
+            <span className="hero__drain-label"> שנשרפו מאז שנכנסתם לדף הזה</span>
+        </div>
+    )
+}
+
+/* Number Rain - Round 7 */
+function NumberRain() {
+    const columns = 12
+    const amounts = ['₪2,400', '₪5,700', '₪800', '₪14,200', '₪3,100', '₪9,800', '₪45,000', '₪1,500', '₪22,500', '₪7,650', '₪4,200', '₪12,900']
+
+    return (
+        <div className="hero__rain" aria-hidden="true">
+            {Array.from({ length: columns }).map((_, i) => (
+                <div
+                    key={i}
+                    className="hero__rain-col"
+                    style={{
+                        animationDelay: `${-Math.random() * 20}s`,
+                        animationDuration: `${15 + Math.random() * 15}s`,
+                        left: `${(i / columns) * 100}%`,
+                        opacity: 0.03 + Math.random() * 0.03,
+                    }}
+                >
+                    {Array.from({ length: 8 }).map((_, j) => (
+                        <span key={j} className="font-mono">{amounts[(i + j) % amounts.length]}</span>
+                    ))}
+                </div>
+            ))}
+        </div>
+    )
+}
+
+/* Trust Bar - Round 19 */
+function TrustBar() {
+    return (
+        <div className="hero__trust-bar fade-in-up visible delay-4">
+            <div className="hero__trust-item">
+                <span className="hero__trust-check">✓</span>
+                <span>מחובר ללמ&quot;ס</span>
+            </div>
+            <div className="hero__trust-sep">·</div>
+            <div className="hero__trust-item">
+                <span className="hero__trust-check">✓</span>
+                <span>מחובר לבנק ישראל</span>
+            </div>
+            <div className="hero__trust-sep">·</div>
+            <div className="hero__trust-item">
+                <span className="hero__trust-check">✓</span>
+                <span>הצפנת <span className="font-latin">AES-256</span></span>
+            </div>
+            <div className="hero__trust-sep">·</div>
+            <div className="hero__trust-item">
+                <span className="hero__trust-check">✓</span>
+                <span className="font-latin">GDPR Compliant</span>
+            </div>
+        </div>
+    )
 }
 
 export default function HeroSection() {
@@ -63,6 +151,9 @@ export default function HeroSection() {
 
     return (
         <section className="hero section" id="hero" ref={heroRef} onMouseMove={handleMouseMove}>
+            {/* Number Rain - desktop only */}
+            {!isMobile && <NumberRain />}
+
             {/* Interactive mouse glow - desktop only */}
             {!isMobile && (
                 <div
@@ -115,6 +206,16 @@ export default function HeroSection() {
                     </span>
                 </div>
 
+                {/* Money Drain Counter - Round 1 */}
+                <MoneyDrain />
+
+                {/* Client Count - Round 20 */}
+                <div className="hero__clients fade-in-up visible delay-3">
+                    <span className="font-mono hero__clients-num">
+                        מעל <CountUp target={2400} duration={2500} /> חוזים נבדקו
+                    </span>
+                </div>
+
                 <div className="hero__cta-wrap fade-in-up visible delay-3">
                     <button className="btn btn-primary hero__cta" id="hero-cta" onClick={scrollToFinalCta}>
                         גלו כמה אתם מפסידים ←
@@ -124,6 +225,9 @@ export default function HeroSection() {
                     </p>
                 </div>
             </div>
+
+            {/* Trust Bar - Round 19 */}
+            <TrustBar />
         </section>
     )
 }

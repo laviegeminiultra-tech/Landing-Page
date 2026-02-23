@@ -1,3 +1,29 @@
+/* Scarcity Badge (Round 11) */
+.pricing__scarcity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-block-end: var(--space-3);
+    font-family: var(--font-hebrew);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent-gold);
+}
+
+.pricing__scarcity-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-gold);
+    animation: scarcityPulse 2s ease-in-out infinite;
+}
+
+@keyframes scarcityPulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+    50% { opacity: 0.6; box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+}
+
 .pricing__roi {
     display: flex;
     flex-wrap: wrap;
@@ -62,12 +88,66 @@
     flex-direction: column;
     gap: var(--space-2);
     position: relative;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Pricing Card Hover Glow (Round 12) */
+.pricing__card::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: var(--card-radius);
+    background: conic-gradient(
+        from var(--card-glow-angle, 0deg),
+        transparent 0deg,
+        var(--accent-blue) 30deg,
+        transparent 60deg,
+        transparent 360deg
+    );
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    will-change: opacity;
+}
+
+.pricing__card:hover::after {
+    opacity: 1;
+    animation: cardGlowRotate 3s linear infinite;
+}
+
+@keyframes cardGlowRotate {
+    to {
+        --card-glow-angle: 360deg;
+    }
+}
+
+/* Fallback for browsers that don't support @property */
+@supports not (background: conic-gradient(from 0deg, red, blue)) {
+    .pricing__card:hover::after {
+        background: linear-gradient(135deg, var(--accent-blue), transparent, var(--accent-green));
+        opacity: 0.3;
+    }
+}
+
+.pricing__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
 }
 
 .pricing__card--recommended {
     border-color: var(--accent-green);
     transform: translateY(-8px);
     box-shadow: 0 0 30px rgba(16, 185, 129, 0.1);
+}
+
+.pricing__card--recommended::after {
+    background: conic-gradient(
+        from var(--card-glow-angle, 0deg),
+        transparent 0deg,
+        var(--accent-green) 30deg,
+        transparent 60deg,
+        transparent 360deg
+    );
 }
 
 .pricing__badge {
@@ -117,8 +197,34 @@
     gap: 8px;
 }
 
-.pricing__check {
+/* Stagger-reveal (Round 17) */
+.pricing__feature-item {
+    opacity: 0;
+    transform: translateX(10px);
+}
+
+.pricing__feature-item--active {
+    animation: featureSlideIn 0.4s ease-out forwards;
+}
+
+@keyframes featureSlideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Animated SVG Checkmark (Round 22) */
+.pricing__check-svg {
     flex-shrink: 0;
+}
+
+.pricing__check-path {
+    transition: stroke-dashoffset 0.5s ease-out;
+}
+
+.pricing__check-svg--active .pricing__check-path {
+    stroke-dashoffset: 0;
 }
 
 .pricing__btn {
@@ -145,5 +251,24 @@
     .pricing__card--recommended {
         transform: none;
         order: -1;
+    }
+
+    .pricing__card:hover {
+        transform: none;
+    }
+
+    .pricing__card--recommended:hover {
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pricing__scarcity-dot {
+        animation: none;
+    }
+
+    .pricing__feature-item {
+        opacity: 1;
+        transform: none;
     }
 }

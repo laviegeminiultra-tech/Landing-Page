@@ -22,7 +22,6 @@
     inset-inline-start: 10%;
     width: 80%;
     height: 4px;
-    /* Flip SVG so dashoffset animation fills right-to-left in RTL */
     transform: scaleX(-1);
 }
 
@@ -36,6 +35,11 @@
 
 .engine__line--active .engine__line-fill {
     stroke-dashoffset: 0;
+}
+
+/* Data pulse glow (Round 5) */
+.engine__pulse-dot {
+    filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.6));
 }
 
 /* Steps */
@@ -121,5 +125,11 @@
 
     .engine__desc {
         max-width: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .engine__pulse-dot {
+        display: none;
     }
 }

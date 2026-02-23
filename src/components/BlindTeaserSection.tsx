@@ -1,4 +1,6 @@
 import { useInView } from '../hooks/useInView'
+import { useIsMobile } from '../hooks/useIsMobile'
+import { useState, useCallback } from 'react'
 import './BlindTeaserSection.css'
 
 const blurredCards = [
@@ -8,10 +10,54 @@ const blurredCards = [
     { type: 'דמי ניהול מופרזים', desc: 'תעריף דמי ניהול חורג מהמקובל בשוק', amount: '₪12,900', severity: 'קריטית' },
 ]
 
-const blurLevels = [3, 6, 10, 14]
+/* Redaction card with peek effect (Round 2) */
+function RedactedCard({ card, index, isVisible }: { card: typeof blurredCards[0]; index: number; isVisible: boolean }) {
+    const isMobile = useIsMobile()
+    const [isPeeking, setIsPeeking] = useState(false)
+
+    const handlePeek = useCallback(() => {
+        if (isPeeking) return
+        setIsPeeking(true)
+        setTimeout(() => setIsPeeking(false), 200)
+    }, [isPeeking])
+
+    return (
+        <div
+            className={`teaser__redacted-card card fade-in-up ${isVisible ? 'visible' : ''} ${isPeeking ? 'teaser__redacted-card--peeking' : ''}`}
+            style={{ animationDelay: `${0.5 + index * 0.2}s` }}
+            onMouseEnter={!isMobile ? handlePeek : undefined}
+            onClick={isMobile ? handlePeek : undefined}
+        >
+            {/* Redaction bars (Round 2) */}
+            <div className="teaser__redaction-bars">
+                <div className="teaser__redaction-bar teaser__redaction-bar--1" />
+                <div className="teaser__redaction-bar teaser__redaction-bar--2" />
+                <div className="teaser__redaction-bar teaser__redaction-bar--3" />
+            </div>
+
+            <div className="teaser__card-row">
+                <span className="teaser__card-label">סוג:</span>
+                <span>{card.type}</span>
+            </div>
+            <div className="teaser__card-row">
+                <span className="teaser__card-label">תיאור:</span>
+                <span>{card.desc}</span>
+            </div>
+            <div className="teaser__card-row">
+                <span className="teaser__card-label">חריגה:</span>
+                <span className="font-mono" style={{ color: 'var(--accent-red)' }}>{card.amount}</span>
+            </div>
+            <div className="teaser__card-row">
+                <span className="teaser__card-label">חומרה:</span>
+                <span>{card.severity}</span>
+            </div>
+        </div>
+    )
+}
 
 export default function BlindTeaserSection() {
     const { ref, isVisible } = useInView()
+    const isMobile = useIsMobile()
 
     return (
         <section className="teaser section" id="teaser" ref={ref}>
@@ -37,11 +83,11 @@ export default function BlindTeaserSection() {
                         <span className="font-mono">₪0</span>
                         <span className="teaser__card-separator">|</span>
                         <span className="teaser__card-label">חויב בפועל:</span>
-                        <span className="font-mono" style={{ color: 'var(--accent-red)' }}>₪4,200</span>
+                        <span className="font-mono amount-shake" style={{ color: 'var(--accent-red)' }}>₪4,200</span>
                     </div>
                     <div className="teaser__card-row">
                         <span className="teaser__card-label">חריגה:</span>
-                        <span className="font-mono" style={{ color: 'var(--accent-red)', fontWeight: 600 }}>+₪4,200</span>
+                        <span className="font-mono amount-shake" style={{ color: 'var(--accent-red)', fontWeight: 600 }}>+₪4,200</span>
                     </div>
                     <div className="teaser__card-row">
                         <span className="teaser__card-label">חומרה:</span>
@@ -49,35 +95,11 @@ export default function BlindTeaserSection() {
                     </div>
                 </div>
 
-                {/* Blurred cards */}
+                {/* Blurred cards with redaction */}
                 <div className="teaser__blurred-wrap">
                     <div className="teaser__blurred-grid">
                         {blurredCards.map((card, i) => (
-                            <div
-                                key={i}
-                                className={`teaser__blurred-card card fade-in-up ${isVisible ? 'visible' : ''}`}
-                                style={{
-                                    animationDelay: `${0.5 + i * 0.2}s`,
-                                    filter: `blur(${blurLevels[i]}px)`,
-                                }}
-                            >
-                                <div className="teaser__card-row">
-                                    <span className="teaser__card-label">סוג:</span>
-                                    <span>{card.type}</span>
-                                </div>
-                                <div className="teaser__card-row">
-                                    <span className="teaser__card-label">תיאור:</span>
-                                    <span>{card.desc}</span>
-                                </div>
-                                <div className="teaser__card-row">
-                                    <span className="teaser__card-label">חריגה:</span>
-                                    <span className="font-mono" style={{ color: 'var(--accent-red)' }}>{card.amount}</span>
-                                </div>
-                                <div className="teaser__card-row">
-                                    <span className="teaser__card-label">חומרה:</span>
-                                    <span>{card.severity}</span>
-                                </div>
-                            </div>
+                            <RedactedCard key={i} card={card} index={i} isVisible={isVisible} />
                         ))}
                     </div>
 
@@ -94,6 +116,17 @@ export default function BlindTeaserSection() {
                             </button>
                         </div>
                     </div>
+
+                    {/* Swipe hint for mobile (Round 25) */}
+                    {isMobile && (
+                        <div className="teaser__swipe-hint" aria-hidden="true">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M16 8l-4 4-4-4" stroke="var(--text-muted)" strokeWidth="2" strokeLinecap="round" />
+                                <path d="M16 14l-4 4-4-4" stroke="var(--text-muted)" strokeWidth="2" strokeLinecap="round" />
+                            </svg>
+                            <span>הקישו לצפייה חלקית</span>
+                        </div>
+                    )}
                 </div>
             </div>
         </section>

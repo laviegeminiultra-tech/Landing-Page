@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useIsMobile } from '../hooks/useIsMobile'
 import './EmailModal.css'
 
 interface EmailModalProps {
@@ -8,6 +9,7 @@ interface EmailModalProps {
 export default function EmailModal({ onClose }: EmailModalProps) {
     const [email, setEmail] = useState('')
     const [submitted, setSubmitted] = useState(false)
+    const isMobile = useIsMobile()
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
@@ -19,7 +21,10 @@ export default function EmailModal({ onClose }: EmailModalProps) {
 
     return (
         <div className="modal-overlay" onClick={onClose}>
-            <div className="modal" onClick={(e) => e.stopPropagation()}>
+            <div className={`modal ${isMobile ? 'modal--bottomsheet' : ''}`} onClick={(e) => e.stopPropagation()}>
+                {/* Bottom sheet drag handle */}
+                {isMobile && <div className="modal__drag-handle" />}
+
                 <button className="modal__close" onClick={onClose} aria-label="סגירה">
                     <svg width="20" height="20" viewBox="0 0 20 20">
                         <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />

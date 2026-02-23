@@ -67,11 +67,60 @@
     gap: var(--space-2);
 }
 
-.teaser__blurred-card {
+/* Redacted cards (Round 2) */
+.teaser__redacted-card {
     display: flex;
     flex-direction: column;
     gap: 4px;
     user-select: none;
+    position: relative;
+    filter: blur(4px);
+    transition: filter 0.2s ease;
+}
+
+.teaser__redacted-card--peeking {
+    filter: blur(1px) !important;
+}
+
+/* Redaction bars (Round 2) */
+.teaser__redaction-bars {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 16px;
+}
+
+.teaser__redaction-bar {
+    height: 12px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 2px;
+    animation: redactionWiggle 2s ease-in-out infinite;
+    will-change: transform;
+}
+
+.teaser__redaction-bar--1 {
+    width: 70%;
+    animation-delay: 0s;
+}
+
+.teaser__redaction-bar--2 {
+    width: 85%;
+    animation-delay: 0.3s;
+}
+
+.teaser__redaction-bar--3 {
+    width: 60%;
+    animation-delay: 0.6s;
+}
+
+@keyframes redactionWiggle {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(2px); }
+    75% { transform: translateX(-2px); }
 }
 
 /* Overlay */
@@ -83,7 +132,7 @@
     justify-content: center;
     background: linear-gradient(to bottom, rgba(11, 22, 40, 0.3), rgba(11, 22, 40, 0.95));
     border-radius: var(--card-radius);
-    z-index: 2;
+    z-index: 3;
 }
 
 .teaser__overlay-content {
@@ -114,10 +163,37 @@
     margin-block-start: var(--space-1);
 }
 
+/* Swipe hint (Round 25) */
+.teaser__swipe-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-block-start: var(--space-2);
+    font-size: 12px;
+    color: var(--text-muted);
+    animation: swipeHintBounce 2s ease-in-out infinite;
+}
+
+@keyframes swipeHintBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+}
+
 @media (max-width: 768px) {
 
     .teaser__visible-card,
     .teaser__blurred-wrap {
         max-width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .teaser__redaction-bar {
+        animation: none;
+    }
+
+    .teaser__swipe-hint {
+        animation: none;
     }
 }
