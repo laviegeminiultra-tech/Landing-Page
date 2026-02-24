@@ -94,10 +94,14 @@
     .hero {
         min-height: auto;
         padding-block: var(--space-12) var(--space-6);
+        overflow-x: hidden;
     }
 
     .hero__content {
-        padding-inline: 0;
+        padding-inline: var(--space-2);
+        max-width: 100%;
+        overflow-wrap: break-word;
+        word-break: break-word;
     }
 
     .hero__title {
@@ -108,6 +112,8 @@
         font-size: 15px;
         line-height: 1.8;
         margin-block-end: var(--space-3);
+        overflow-wrap: break-word;
+        word-break: break-word;
     }
 
     .hero__money {

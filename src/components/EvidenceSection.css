@@ -306,15 +306,21 @@
 
     .evidence__table {
         font-size: 12px;
+        table-layout: fixed;
+        width: 100%;
     }
 
     .evidence__table th {
         font-size: 11px;
         padding: 8px 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .evidence__table td {
         padding: 8px 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .evidence__testimonial {

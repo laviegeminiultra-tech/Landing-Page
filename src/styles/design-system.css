@@ -51,6 +51,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body {
@@ -62,6 +64,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Prevent any child from exceeding viewport width */
+#root {
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 img,
@@ -315,28 +324,45 @@ body::before {
   white-space: nowrap;
 }
 
+@media (max-width: 768px) {
+  /* Allow font-mono text to wrap on mobile to prevent horizontal overflow */
+  .font-mono {
+    white-space: normal;
+  }
+}
+
 /* === Responsive (Mobile: <768px) === */
 @media (max-width: 768px) {
   h1 {
-    font-size: 28px;
+    font-size: clamp(24px, 6vw, 28px);
     line-height: 1.3;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   h2 {
-    font-size: 22px;
+    font-size: clamp(20px, 5vw, 22px);
     line-height: 1.35;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .section {
     padding-block: var(--space-6);
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   .container {
     padding-inline: var(--space-2);
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   .card {
     padding: 16px;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   .btn {
