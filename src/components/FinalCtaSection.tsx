@@ -29,12 +29,6 @@ export default function FinalCtaSection() {
                     {isMobile ? 'שלחו לי לינק העלאה למייל המשרדי ←' : 'התחילו ביקורת עכשיו ←'}
                 </button>
 
-                {isMobile && (
-                    <button className={`btn btn-navy final-cta__btn fade-in-up ${isVisible ? 'visible' : ''}`} onClick={() => setShowModal(true)} style={{ marginBlockStart: '16px', animationDelay: '0.3s' }}>
-                        שלחו לי לינק העלאה למייל המשרדי ←
-                    </button>
-                )}
-
                 <p className={`final-cta__contact text-muted fade-in-up ${isVisible ? 'visible' : ''}`} style={{ animationDelay: '0.4s' }}>
                     audit@opexguard.co.il · העלאת מסמכים מאובטחת
                 </p>
