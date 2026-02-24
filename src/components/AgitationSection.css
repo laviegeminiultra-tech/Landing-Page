@@ -56,13 +56,24 @@
 }
 
 @media (max-width: 768px) {
+    .agitation__intro {
+        font-size: 15px;
+        line-height: 1.7;
+        margin-block-end: var(--space-4);
+    }
+
     .agitation__grid {
         grid-template-columns: 1fr;
         gap: var(--space-2);
     }
 
+    .agitation__card-title {
+        font-size: 16px;
+    }
+
     .agitation__card-body {
         min-height: auto;
+        font-size: 14px;
     }
 }
 

@@ -34,5 +34,15 @@
     .final-cta__btn {
         width: 100%;
         min-width: auto;
+        font-size: 14px;
+        white-space: normal;
+        line-height: 1.4;
+        height: auto;
+        min-height: 52px;
+        padding: var(--space-1) var(--space-2);
+    }
+
+    .final-cta__contact {
+        font-size: 12px;
     }
 }

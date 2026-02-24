@@ -59,16 +59,28 @@
 }
 
 @media (max-width: 768px) {
+    .navbar__inner {
+        height: 56px;
+    }
+
+    .navbar__logo-img {
+        height: 32px;
+    }
+
     .navbar__links {
         gap: var(--space-1);
     }
 
+    /* Hide text nav links on mobile — keep only CTA */
     .navbar__link {
-        font-size: 12px;
-        white-space: nowrap;
+        display: none;
     }
 
     .navbar__cta {
-        display: none;
+        display: inline-flex;
+        font-size: 13px;
+        height: 36px;
+        padding-inline: var(--space-2);
+        width: auto;
     }
 }

@@ -93,23 +93,47 @@
 @media (max-width: 768px) {
     .hero {
         min-height: auto;
-        padding-block: var(--space-15) var(--space-8);
+        padding-block: var(--space-12) var(--space-6);
+    }
+
+    .hero__content {
+        padding-inline: 0;
+    }
+
+    .hero__title {
+        margin-block-end: var(--space-2);
     }
 
     .hero__subtitle {
-        font-size: 17px;
+        font-size: 15px;
+        line-height: 1.8;
+        margin-block-end: var(--space-3);
+    }
+
+    .hero__money {
+        margin-block-end: var(--space-2);
     }
 
     .hero__money-text {
-        font-size: 22px;
+        font-size: 18px;
+        white-space: normal;
+        line-height: 1.5;
     }
 
     .hero__cta {
         width: 100%;
     }
 
+    .hero__trust {
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
     .hero__trust-bar {
-        gap: 8px;
+        flex-direction: column;
+        gap: 6px;
+        margin-block-start: var(--space-4);
+        padding: var(--space-2);
     }
 
     .hero__trust-sep {

@@ -275,6 +275,10 @@
 }
 
 @media (max-width: 768px) {
+    .evidence__title {
+        margin-block-end: var(--space-4);
+    }
+
     .evidence__visual {
         flex-direction: column;
         gap: 0;
@@ -300,8 +304,30 @@
         display: none;
     }
 
+    .evidence__table {
+        font-size: 12px;
+    }
+
+    .evidence__table th {
+        font-size: 11px;
+        padding: 8px 10px;
+    }
+
+    .evidence__table td {
+        padding: 8px 10px;
+    }
+
     .evidence__testimonial {
         max-width: 100%;
+        padding: var(--space-2) var(--space-3);
+    }
+
+    .evidence__testimonial-text {
+        font-size: 15px;
+    }
+
+    .evidence__copy {
+        font-size: 15px;
     }
 }
 

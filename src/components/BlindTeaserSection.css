@@ -119,8 +119,33 @@
 
 @media (max-width: 768px) {
 
+    .teaser__title {
+        margin-block-end: var(--space-4);
+    }
+
     .teaser__visible-card,
     .teaser__blurred-wrap {
         max-width: 100%;
+    }
+
+    .teaser__card-row {
+        font-size: 13px;
+    }
+
+    .teaser__overlay-text {
+        font-size: 16px;
+    }
+
+    .teaser__overlay-amount {
+        font-size: 20px;
+    }
+
+    .teaser__overlay-cta {
+        font-size: 14px;
+        white-space: normal;
+        line-height: 1.4;
+        height: auto;
+        min-height: 52px;
+        padding: var(--space-1) var(--space-2);
     }
 }

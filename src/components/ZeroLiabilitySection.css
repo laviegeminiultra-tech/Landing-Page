@@ -59,11 +59,21 @@
 }
 
 @media (max-width: 768px) {
+    .zero__title {
+        margin-block-end: var(--space-4);
+    }
+
     .zero__accordions {
         max-width: 100%;
     }
 
     .zero__question {
-        font-size: 15px;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .zero__answer {
+        font-size: 14px;
+        line-height: 1.7;
     }
 }

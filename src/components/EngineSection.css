@@ -99,10 +99,14 @@
 }
 
 @media (max-width: 768px) {
+    .engine__title {
+        margin-block-end: var(--space-4);
+    }
+
     .engine__pipeline {
         grid-template-columns: 1fr;
-        gap: var(--space-5);
-        padding-inline-start: var(--space-8);
+        gap: var(--space-4);
+        padding-inline-start: var(--space-6);
     }
 
     .engine__line--desktop {
@@ -112,7 +116,7 @@
     .engine__line--mobile {
         display: block;
         position: absolute;
-        inset-inline-start: 36px;
+        inset-inline-start: 28px;
         inset-block-start: 36px;
         width: 4px;
         height: calc(100% - 72px);
@@ -123,8 +127,18 @@
         text-align: start;
     }
 
+    .engine__icon {
+        width: 56px;
+        height: 56px;
+    }
+
+    .engine__label {
+        font-size: 15px;
+    }
+
     .engine__desc {
         max-width: none;
+        font-size: 13px;
     }
 }
 

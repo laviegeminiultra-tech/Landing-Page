@@ -2,7 +2,7 @@
     position: fixed;
     inset-block-end: 0;
     inset-inline: 0;
-    height: 64px;
+    height: 60px;
     background: var(--bg-deep);
     border-block-start: 1px solid var(--border-subtle);
     display: flex;
@@ -19,6 +19,6 @@
 
 .sticky-cta__btn {
     width: 100%;
-    font-size: 16px;
-    height: 48px;
+    font-size: 15px;
+    height: 44px;
 }

@@ -175,17 +175,42 @@
 
 @media (max-width: 768px) {
     .pricing__roi {
-        font-size: 14px;
-        gap: var(--space-1);
+        font-size: 13px;
+        gap: 6px;
+        padding: var(--space-2);
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .pricing__roi-arrow {
+        transform: rotate(-90deg);
+        font-size: 12px;
+    }
+
+    .pricing__roi-highlight {
+        font-size: 18px;
+    }
+
+    .pricing__title {
+        margin-block-end: var(--space-4);
     }
 
     .pricing__grid {
         grid-template-columns: 1fr;
+        padding-block-start: 16px;
     }
 
     .pricing__card--recommended {
         transform: none;
         order: -1;
+    }
+
+    .pricing__card-price {
+        font-size: 28px;
+    }
+
+    .pricing__card-name {
+        font-size: 18px;
     }
 }
 
