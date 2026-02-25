@@ -60,11 +60,11 @@
 
 @media (max-width: 768px) {
     .navbar__inner {
-        height: 56px;
+        height: 48px;
     }
 
     .navbar__logo-img {
-        height: 32px;
+        height: 28px;
     }
 
     .navbar__links {
@@ -78,9 +78,10 @@
 
     .navbar__cta {
         display: inline-flex;
-        font-size: 13px;
-        height: 36px;
-        padding-inline: var(--space-2);
+        font-size: 12px;
+        height: 32px;
+        padding-inline: 12px;
         width: auto;
+        border-radius: 8px;
     }
 }

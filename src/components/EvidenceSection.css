@@ -34,13 +34,11 @@
     inset-block-start: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(
-        to bottom,
-        transparent,
-        rgba(59, 130, 246, 0.15),
-        rgba(59, 130, 246, 0.08),
-        transparent
-    );
+    background: linear-gradient(to bottom,
+            transparent,
+            rgba(59, 130, 246, 0.15),
+            rgba(59, 130, 246, 0.08),
+            transparent);
     animation: scanSweep 2s ease-in-out 0.5s 1 forwards;
     opacity: 0;
     z-index: 2;
@@ -52,12 +50,15 @@
         inset-inline-start: 0%;
         opacity: 0;
     }
+
     5% {
         opacity: 1;
     }
+
     90% {
         opacity: 1;
     }
+
     100% {
         inset-inline-start: 100%;
         opacity: 0;
@@ -276,12 +277,12 @@
 
 @media (max-width: 768px) {
     .evidence__title {
-        margin-block-end: var(--space-4);
+        margin-block-end: var(--space-3);
     }
 
     .evidence__visual {
         flex-direction: column;
-        gap: 0;
+        gap: var(--space-2);
     }
 
     .evidence__excel {
@@ -292,8 +293,14 @@
         transform: translateY(0);
     }
 
+    .evidence__excel {
+        display: none;
+    }
+
     .evidence__pdf {
         transform: translateY(20px);
+        width: 75%;
+        margin-inline: auto;
     }
 
     .evidence__pdf--active {
@@ -302,25 +309,6 @@
 
     .evidence__trace {
         display: none;
-    }
-
-    .evidence__table {
-        font-size: 12px;
-        table-layout: fixed;
-        width: 100%;
-    }
-
-    .evidence__table th {
-        font-size: 11px;
-        padding: 8px 10px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .evidence__table td {
-        padding: 8px 10px;
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
 
     .evidence__testimonial {
@@ -333,7 +321,8 @@
     }
 
     .evidence__copy {
-        font-size: 15px;
+        font-size: 14px;
+        line-height: 1.7;
     }
 }
 

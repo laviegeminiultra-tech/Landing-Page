@@ -33,6 +33,8 @@
 @media (max-width: 768px) {
     .footer {
         padding-block: var(--space-3);
+        padding-block-end: calc(var(--space-3) + 68px);
+        /* Clear sticky CTA */
     }
 
     .footer__logo {
@@ -41,6 +43,7 @@
 
     .footer__text {
         font-size: 11px;
-        line-height: 1.6;
+        line-height: 2;
+        word-spacing: 2px;
     }
 }

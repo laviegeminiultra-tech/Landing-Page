@@ -100,12 +100,12 @@
 
 @media (max-width: 768px) {
     .engine__title {
-        margin-block-end: var(--space-4);
+        margin-block-end: var(--space-3);
     }
 
     .engine__pipeline {
         grid-template-columns: 1fr;
-        gap: var(--space-4);
+        gap: var(--space-3);
         padding-inline-start: var(--space-6);
         max-width: 100%;
     }
@@ -118,19 +118,28 @@
         display: block;
         position: absolute;
         inset-inline-start: 28px;
-        inset-block-start: 36px;
+        inset-block-start: 28px;
         width: 4px;
-        height: calc(100% - 72px);
+        height: calc(100% - 56px);
     }
 
     .engine__step {
         align-items: flex-start;
         text-align: start;
+        /* Make steps visible immediately on mobile to avoid empty gaps */
+        opacity: 1;
+        transform: none;
+        animation: none !important;
     }
 
     .engine__icon {
-        width: 56px;
-        height: 56px;
+        width: 48px;
+        height: 48px;
+    }
+
+    .engine__icon svg {
+        width: 28px;
+        height: 28px;
     }
 
     .engine__label {
@@ -140,6 +149,7 @@
     .engine__desc {
         max-width: none;
         font-size: 13px;
+        line-height: 1.5;
     }
 }
 
