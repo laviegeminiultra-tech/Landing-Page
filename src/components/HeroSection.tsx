@@ -43,23 +43,25 @@ function CountUp({ target, duration = 2000 }: { target: number; duration?: numbe
 
 /* Trust Bar */
 function TrustBar() {
+    const isMobile = useIsMobile()
+
     return (
         <div className="hero__trust-bar fade-in-up visible delay-4">
             <div className="hero__trust-item">
                 <span className="hero__trust-check">✓</span>
                 <span>מחובר ללמ&quot;ס</span>
             </div>
-            <div className="hero__trust-sep">·</div>
+            {!isMobile && <div className="hero__trust-sep">·</div>}
             <div className="hero__trust-item">
                 <span className="hero__trust-check">✓</span>
                 <span>מחובר לבנק ישראל</span>
             </div>
-            <div className="hero__trust-sep">·</div>
+            {!isMobile && <div className="hero__trust-sep">·</div>}
             <div className="hero__trust-item">
                 <span className="hero__trust-check">✓</span>
                 <span>הצפנת <span className="font-latin">AES-256</span></span>
             </div>
-            <div className="hero__trust-sep">·</div>
+            {!isMobile && <div className="hero__trust-sep">·</div>}
             <div className="hero__trust-item">
                 <span className="hero__trust-check">✓</span>
                 <span className="font-latin">GDPR Compliant</span>
@@ -69,8 +71,6 @@ function TrustBar() {
 }
 
 export default function HeroSection() {
-    const isMobile = useIsMobile()
-
     return (
         <section className="hero section" id="hero">
             <div className="hero__content container">
@@ -79,20 +79,14 @@ export default function HeroSection() {
                 </h1>
 
                 <p className="hero__subtitle fade-in-up visible delay-1">
-                    {isMobile
-                        ? <>ביקורת חוזה שכירות אוטומטית מול נתוני הלמ״ס ובנק ישראל.</>
-                        : <><span className="font-latin">OpexGuard</span> מצליב את חוזה השכירות והחשבוניות שלכם מול נתוני הלמ&quot;ס
-                            ובנק ישראל — ומאתר חיובי <span className="font-latin">CAPEX</span> בלתי חוקיים, פערי מדד, וגילום
-                            שטחים שגוי. אוטומטית.</>
-                    }
+                    <span className="font-latin">OpexGuard</span> מצליב את חוזה השכירות והחשבוניות שלכם מול נתוני הלמ&quot;ס
+                    ובנק ישראל — ומאתר חיובי <span className="font-latin">CAPEX</span> בלתי חוקיים, פערי מדד, וגילום
+                    שטחים שגוי. אוטומטית.
                 </p>
 
                 <div className="hero__money fade-in-up visible delay-2">
                     <span className="font-mono hero__money-text">
-                        {isMobile
-                            ? <>₪<CountUp target={45000} duration={2000} />+ חיוב יתר בממוצע</>
-                            : <>בממוצע ₪<CountUp target={45000} duration={2000} />+  בחיובי יתר לכל חוזה, בכל שנה.</>
-                        }
+                        בממוצע ₪<CountUp target={45000} duration={2000} />+  בחיובי יתר לכל חוזה, בכל שנה.
                     </span>
                 </div>
 
@@ -100,11 +94,6 @@ export default function HeroSection() {
                     <a href="https://app.opexguard.co.il" className="btn btn-primary hero__cta" id="hero-cta" target="_blank" rel="noopener noreferrer">
                         גלו כמה אתם מפסידים ←
                     </a>
-                    {!isMobile && (
-                        <p className="hero__trust text-muted">
-                            מחובר בזמן אמת ללמ&quot;ס ובנק ישראל · ללא התחייבות · אבטחת מידע מלאה
-                        </p>
-                    )}
                 </div>
             </div>
 

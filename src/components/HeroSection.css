@@ -49,6 +49,7 @@
 
 .hero__cta {
     min-width: 280px;
+    text-decoration: none;
 }
 
 .hero__trust {
@@ -90,80 +91,73 @@
     font-size: 16px;
 }
 
-/* ========================
-   Mobile: full-screen hero
-   ======================== */
+/* ============================================
+   Mobile: everything present, dramatic contrast
+   ============================================ */
 @media (max-width: 768px) {
     .hero {
-        min-height: 100svh;
-        min-height: 100vh; /* fallback for older browsers */
-        padding-block: 64px var(--space-4);
+        min-height: auto;
+        padding-block: 72px 32px;
         overflow-x: hidden;
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .hero__content {
-        padding-inline: var(--space-4);
+        padding-inline: 20px;
         max-width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
 
-    /* Title: the LOUDEST element */
+    /* ── Title: bold, clear, the anchor ── */
     .hero__title {
-        font-size: 28px !important;
-        line-height: 1.2;
-        margin-block-end: var(--space-3);
+        font-size: 24px !important;
+        line-height: 1.3;
+        margin-block-end: 16px;
     }
 
-    /* Subtitle: small & quiet */
+    /* ── Subtitle: very quiet, supportive ── */
     .hero__subtitle {
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 400;
-        line-height: 1.6;
-        color: var(--text-muted);
-        margin-block-end: var(--space-4);
+        line-height: 1.65;
+        color: rgba(255, 255, 255, 0.45);
+        margin-block-end: 24px;
     }
 
-    /* Money counter: green accent, prominent */
+    /* ── Money: green hook ── */
     .hero__money {
-        margin-block-end: var(--space-4);
+        margin-block-end: 24px;
     }
 
     .hero__money-text {
-        font-size: 22px;
+        font-size: 16px;
         white-space: normal;
-        line-height: 1.4;
+        line-height: 1.5;
     }
 
-    /* CTA: full width, clear action */
+    /* ── CTA ── */
     .hero__cta {
         width: 100%;
         font-size: 15px !important;
         height: 48px !important;
     }
 
-    /* Trust bar: pushed to bottom, tiny */
+    /* ── Trust bar: right below CTA, compact ── */
     .hero__trust-bar {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 4px 14px;
-        margin-block-start: auto;
-        padding: var(--space-2) var(--space-1);
-    }
-
-    .hero__trust-sep {
-        display: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 0;
+        margin-block-start: 24px;
+        padding: 0 20px;
+        justify-items: center;
     }
 
     .hero__trust-item {
         font-size: 11px;
-        color: var(--text-muted);
+        color: rgba(255, 255, 255, 0.4);
     }
 
     .hero__trust-check {
-        font-size: 11px;
+        font-size: 10px;
+        color: rgba(16, 185, 129, 0.6);
     }
 }
