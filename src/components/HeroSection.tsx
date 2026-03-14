@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useIsMobile } from '../hooks/useIsMobile'
 import './HeroSection.css'
 
 function CountUp({ target, duration = 2000 }: { target: number; duration?: number }) {
@@ -68,6 +69,8 @@ function TrustBar() {
 }
 
 export default function HeroSection() {
+    const isMobile = useIsMobile()
+
     return (
         <section className="hero section" id="hero">
             <div className="hero__content container">
@@ -76,14 +79,20 @@ export default function HeroSection() {
                 </h1>
 
                 <p className="hero__subtitle fade-in-up visible delay-1">
-                    <span className="font-latin">OpexGuard</span> מצליב את חוזה השכירות והחשבוניות שלכם מול נתוני הלמ&quot;ס
-                    ובנק ישראל — ומאתר חיובי <span className="font-latin">CAPEX</span> בלתי חוקיים, פערי מדד, וגילום
-                    שטחים שגוי. אוטומטית.
+                    {isMobile
+                        ? <>ביקורת חוזה שכירות אוטומטית מול נתוני הלמ״ס ובנק ישראל.</>
+                        : <><span className="font-latin">OpexGuard</span> מצליב את חוזה השכירות והחשבוניות שלכם מול נתוני הלמ&quot;ס
+                            ובנק ישראל — ומאתר חיובי <span className="font-latin">CAPEX</span> בלתי חוקיים, פערי מדד, וגילום
+                            שטחים שגוי. אוטומטית.</>
+                    }
                 </p>
 
                 <div className="hero__money fade-in-up visible delay-2">
                     <span className="font-mono hero__money-text">
-                        בממוצע ₪<CountUp target={45000} duration={2000} />+  בחיובי יתר לכל חוזה, בכל שנה.
+                        {isMobile
+                            ? <>₪<CountUp target={45000} duration={2000} />+ חיוב יתר בממוצע</>
+                            : <>בממוצע ₪<CountUp target={45000} duration={2000} />+  בחיובי יתר לכל חוזה, בכל שנה.</>
+                        }
                     </span>
                 </div>
 
@@ -91,9 +100,11 @@ export default function HeroSection() {
                     <a href="https://app.opexguard.co.il" className="btn btn-primary hero__cta" id="hero-cta" target="_blank" rel="noopener noreferrer">
                         גלו כמה אתם מפסידים ←
                     </a>
-                    <p className="hero__trust text-muted">
-                        מחובר בזמן אמת ללמ&quot;ס ובנק ישראל · ללא התחייבות · אבטחת מידע מלאה
-                    </p>
+                    {!isMobile && (
+                        <p className="hero__trust text-muted">
+                            מחובר בזמן אמת ללמ&quot;ס ובנק ישראל · ללא התחייבות · אבטחת מידע מלאה
+                        </p>
+                    )}
                 </div>
             </div>
 
