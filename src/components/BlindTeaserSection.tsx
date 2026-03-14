@@ -89,9 +89,9 @@ export default function BlindTeaserSection() {
                                 <span className="font-mono" style={{ display: 'inline' }}>4</span> ממצאים נוספים בשווי{' '}
                                 <span className="font-mono teaser__overlay-amount">₪41,300</span>
                             </p>
-                            <button className="btn btn-primary teaser__overlay-cta">
+                            <a href="https://app.opexguard.co.il" className="btn btn-primary teaser__overlay-cta" target="_blank" rel="noopener noreferrer">
                                 העלו את החוזה שלכם לצפייה בכל הממצאים ←
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>

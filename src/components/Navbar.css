@@ -8,7 +8,7 @@
 }
 
 .navbar--glass {
-    background-color: rgba(11, 22, 40, 0.8);
+    background-color: rgba(11, 22, 40, 0.85);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-block-end-color: var(--border-subtle);
@@ -61,27 +61,44 @@
 @media (max-width: 768px) {
     .navbar__inner {
         height: 48px;
+        padding-inline: var(--space-2);
     }
 
     .navbar__logo-img {
-        height: 28px;
+        height: 26px;
     }
 
     .navbar__links {
         gap: var(--space-1);
     }
 
-    /* Hide text nav links on mobile — keep only CTA */
+    /* Hide text nav links on mobile */
     .navbar__link {
         display: none;
     }
 
+    /* Override btn-primary styles with !important for navbar CTA on mobile */
     .navbar__cta {
-        display: inline-flex;
-        font-size: 12px;
-        height: 32px;
-        padding-inline: 12px;
-        width: auto;
-        border-radius: 8px;
+        background: transparent !important;
+        border: 1px solid rgba(59, 130, 246, 0.35) !important;
+        color: var(--accent-blue) !important;
+        font-size: 11px !important;
+        font-weight: 600 !important;
+        height: 28px !important;
+        padding-inline: 10px !important;
+        width: auto !important;
+        border-radius: 6px !important;
+        box-shadow: none !important;
+        text-decoration: none;
+    }
+
+    .navbar__cta:hover {
+        background: transparent !important;
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    .navbar__cta:active {
+        transform: scale(0.97) !important;
     }
 }

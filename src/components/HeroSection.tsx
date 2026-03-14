@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import './HeroSection.css'
 
 function CountUp({ target, duration = 2000 }: { target: number; duration?: number }) {
@@ -68,14 +68,8 @@ function TrustBar() {
 }
 
 export default function HeroSection() {
-    const heroRef = useRef<HTMLElement>(null)
-
-    const scrollToFinalCta = () => {
-        document.getElementById('final-cta')?.scrollIntoView({ behavior: 'smooth' })
-    }
-
     return (
-        <section className="hero section" id="hero" ref={heroRef}>
+        <section className="hero section" id="hero">
             <div className="hero__content container">
                 <h1 className="hero__title fade-in-up visible">
                     המשכיר שלכם גובה יותר מדי.
@@ -94,9 +88,9 @@ export default function HeroSection() {
                 </div>
 
                 <div className="hero__cta-wrap fade-in-up visible delay-3">
-                    <button className="btn btn-primary hero__cta" id="hero-cta" onClick={scrollToFinalCta}>
+                    <a href="https://app.opexguard.co.il" className="btn btn-primary hero__cta" id="hero-cta" target="_blank" rel="noopener noreferrer">
                         גלו כמה אתם מפסידים ←
-                    </button>
+                    </a>
                     <p className="hero__trust text-muted">
                         מחובר בזמן אמת ללמ&quot;ס ובנק ישראל · ללא התחייבות · אבטחת מידע מלאה
                     </p>

@@ -83,6 +83,10 @@ a {
   text-decoration: none;
 }
 
+a.btn {
+  text-decoration: none;
+}
+
 button {
   font-family: inherit;
   cursor: pointer;

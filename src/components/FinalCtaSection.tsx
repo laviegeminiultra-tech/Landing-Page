@@ -21,13 +21,15 @@ export default function FinalCtaSection() {
                     כל חודש שעובר — אתם מפסידים עוד כסף.
                 </h2>
 
-                <button
+                <a
+                    href="https://app.opexguard.co.il"
                     className={`btn btn-primary final-cta__btn fade-in-up ${isVisible ? 'visible' : ''}`}
                     style={{ animationDelay: '0.2s' }}
-                    onClick={isMobile ? () => setShowModal(true) : handleDesktopCta}
+                    target="_blank"
+                    rel="noopener noreferrer"
                 >
-                    {isMobile ? 'שלחו לי לינק העלאה למייל המשרדי ←' : 'התחילו ביקורת עכשיו ←'}
-                </button>
+                    התחילו ביקורת עכשיו ←
+                </a>
 
                 <p className={`final-cta__contact text-muted fade-in-up ${isVisible ? 'visible' : ''}`} style={{ animationDelay: '0.4s' }}>
                     audit@opexguard.co.il · העלאת מסמכים מאובטחת

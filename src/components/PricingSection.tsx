@@ -81,9 +81,9 @@ export default function PricingSection() {
                                 </li>
                             ))}
                         </ul>
-                        <button className="btn btn-navy pricing__btn">
+                        <a href="https://app.opexguard.co.il" className="btn btn-navy pricing__btn" target="_blank" rel="noopener noreferrer">
                             הפק דוח עכשיו →
-                        </button>
+                        </a>
                     </div>
 
                     {/* Legal Strike Card */}
@@ -105,9 +105,9 @@ export default function PricingSection() {
                                 </li>
                             ))}
                         </ul>
-                        <button className="btn btn-green pricing__btn">
+                        <a href="https://app.opexguard.co.il" className="btn btn-green pricing__btn" target="_blank" rel="noopener noreferrer">
                             הפעל פרוטוקול תקיפה →
-                        </button>
+                        </a>
                     </div>
                 </div>
 

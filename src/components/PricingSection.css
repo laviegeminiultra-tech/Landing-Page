@@ -164,6 +164,7 @@
 
 .pricing__btn {
     margin-block-start: auto;
+    text-decoration: none;
 }
 
 .pricing__footer {
@@ -176,15 +177,14 @@
 @media (max-width: 768px) {
     .pricing__roi {
         font-size: 13px;
-        gap: 6px;
+        gap: 4px;
         padding: var(--space-2);
         flex-direction: column;
         text-align: center;
     }
 
     .pricing__roi-arrow {
-        transform: rotate(-90deg);
-        font-size: 12px;
+        display: none;
     }
 
     .pricing__roi-highlight {
@@ -192,12 +192,13 @@
     }
 
     .pricing__title {
-        margin-block-end: var(--space-4);
+        margin-block-end: var(--space-3);
     }
 
     .pricing__grid {
         grid-template-columns: 1fr;
         padding-block-start: 16px;
+        gap: var(--space-4);
     }
 
     .pricing__card--recommended {
@@ -206,11 +207,31 @@
     }
 
     .pricing__card-price {
-        font-size: 28px;
+        font-size: 26px;
     }
 
     .pricing__card-name {
-        font-size: 18px;
+        font-size: 17px;
+    }
+
+    .pricing__features {
+        font-size: 13px;
+    }
+
+    /* Make feature items visible immediately on mobile */
+    .pricing__feature-item {
+        opacity: 1;
+        transform: none;
+        animation: none !important;
+    }
+
+    .pricing__btn {
+        font-size: 14px !important;
+    }
+
+    .pricing__footer {
+        font-size: 12px;
+        margin-block-start: var(--space-3);
     }
 }
 

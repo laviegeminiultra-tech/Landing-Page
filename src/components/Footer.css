@@ -33,8 +33,6 @@
 @media (max-width: 768px) {
     .footer {
         padding-block: var(--space-3);
-        padding-block-end: calc(var(--space-3) + 68px);
-        /* Clear sticky CTA */
     }
 
     .footer__logo {

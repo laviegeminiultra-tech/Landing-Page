@@ -10,8 +10,8 @@ import ZeroLiabilitySection from '../components/ZeroLiabilitySection'
 import PricingSection from '../components/PricingSection'
 import FinalCtaSection from '../components/FinalCtaSection'
 import Footer from '../components/Footer'
-import StickyMobileCta from '../components/StickyMobileCta'
 import InteractiveBackground from '../components/InteractiveBackground'
+
 export default function LandingPage() {
     return (
         <>
@@ -36,7 +36,6 @@ export default function LandingPage() {
                 <FinalCtaSection />
             </main>
             <Footer />
-            <StickyMobileCta />
         </>
     )
 }

@@ -25,9 +25,9 @@ export default function Navbar() {
                     <button className="navbar__link" onClick={() => scrollTo('pricing')}>
                         תמחור
                     </button>
-                    <button className="btn btn-primary btn-sm navbar__cta" onClick={() => scrollTo('final-cta')}>
+                    <a href="https://app.opexguard.co.il" className="btn btn-primary btn-sm navbar__cta" target="_blank" rel="noopener noreferrer">
                         התחילו ←
-                    </button>
+                    </a>
                 </div>
             </div>
         </nav>
