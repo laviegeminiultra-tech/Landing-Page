@@ -91,62 +91,67 @@
 }
 
 /* ========================
-   Mobile: clean & concise
+   Mobile: full-screen hero
    ======================== */
 @media (max-width: 768px) {
     .hero {
-        min-height: auto;
-        padding-block: var(--space-10) var(--space-5);
+        min-height: 100svh;
+        min-height: 100vh; /* fallback for older browsers */
+        padding-block: 64px var(--space-4);
         overflow-x: hidden;
+        justify-content: center;
     }
 
     .hero__content {
-        padding-inline: var(--space-3);
+        padding-inline: var(--space-4);
         max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    /* Clear hierarchy: title is BIG */
+    /* Title: the LOUDEST element */
     .hero__title {
-        font-size: 26px !important;
-        line-height: 1.25;
-        margin-block-end: var(--space-2);
+        font-size: 28px !important;
+        line-height: 1.2;
+        margin-block-end: var(--space-3);
     }
 
-    /* Subtitle is small & muted — one line */
+    /* Subtitle: small & quiet */
     .hero__subtitle {
         font-size: 14px;
         font-weight: 400;
         line-height: 1.6;
         color: var(--text-muted);
-        margin-block-end: var(--space-3);
+        margin-block-end: var(--space-4);
     }
 
-    /* Money is the second-loudest element */
+    /* Money counter: green accent, prominent */
     .hero__money {
-        margin-block-end: var(--space-3);
+        margin-block-end: var(--space-4);
     }
 
     .hero__money-text {
-        font-size: 20px;
+        font-size: 22px;
         white-space: normal;
         line-height: 1.4;
     }
 
-    /* CTA full width */
+    /* CTA: full width, clear action */
     .hero__cta {
         width: 100%;
         font-size: 15px !important;
         height: 48px !important;
     }
 
-    /* Trust bar: horizontal row, tiny */
+    /* Trust bar: pushed to bottom, tiny */
     .hero__trust-bar {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 4px 12px;
-        margin-block-start: var(--space-3);
-        padding: var(--space-1);
+        gap: 4px 14px;
+        margin-block-start: auto;
+        padding: var(--space-2) var(--space-1);
     }
 
     .hero__trust-sep {
