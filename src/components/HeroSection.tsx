@@ -54,17 +54,17 @@ function TrustBar() {
             {!isMobile && <div className="hero__trust-sep">·</div>}
             <div className="hero__trust-item">
                 <span className="hero__trust-check">✓</span>
-                <span>מחובר לבנק ישראל</span>
+                <span>בנק ישראל</span>
             </div>
             {!isMobile && <div className="hero__trust-sep">·</div>}
             <div className="hero__trust-item">
                 <span className="hero__trust-check">✓</span>
-                <span>הצפנת <span className="font-latin">AES-256</span></span>
+                <span className="font-latin">AES-256</span>
             </div>
             {!isMobile && <div className="hero__trust-sep">·</div>}
             <div className="hero__trust-item">
                 <span className="hero__trust-check">✓</span>
-                <span className="font-latin">GDPR Compliant</span>
+                <span className="font-latin">GDPR</span>
             </div>
         </div>
     )
@@ -74,20 +74,30 @@ export default function HeroSection() {
     return (
         <section className="hero section" id="hero">
             <div className="hero__content container">
-                <h1 className="hero__title fade-in-up visible">
-                    המשכיר שלכם גובה יותר מדי.
+                {/* Context badge */}
+                <div className="hero__badge fade-in-up visible">
+                    <span className="hero__badge-icon">🔍</span>
+                    <span>ביקורת חוזה שכירות מסחרית</span>
+                </div>
+
+                <h1 className="hero__title fade-in-up visible delay-1">
+                    המשכיר שלכם
+                    <br />
+                    <span className="hero__title-accent">גובה יותר מדי.</span>
                 </h1>
 
-                <p className="hero__subtitle fade-in-up visible delay-1">
-                    <span className="font-latin">OpexGuard</span> מצליב את חוזה השכירות והחשבוניות שלכם מול נתוני הלמ&quot;ס
-                    ובנק ישראל — ומאתר חיובי <span className="font-latin">CAPEX</span> בלתי חוקיים, פערי מדד, וגילום
-                    שטחים שגוי. אוטומטית.
+                <p className="hero__subtitle fade-in-up visible delay-2">
+                    <span className="font-latin">OpexGuard</span> מצליב חוזה שכירות וחשבוניות מול נתוני הלמ&quot;ס
+                    ובנק ישראל — ומאתר חיובי <span className="font-latin">CAPEX</span> בלתי חוקיים,
+                    פערי מדד וגילום שטחים. אוטומטית.
                 </p>
 
-                <div className="hero__money fade-in-up visible delay-2">
+                {/* Money highlight card */}
+                <div className="hero__money-card fade-in-up visible delay-3">
                     <span className="font-mono hero__money-text">
-                        בממוצע ₪<CountUp target={45000} duration={2000} />+  בחיובי יתר לכל חוזה, בכל שנה.
+                        ₪<CountUp target={45000} duration={2000} />+
                     </span>
+                    <span className="hero__money-label">חיוב יתר ממוצע לחוזה בשנה</span>
                 </div>
 
                 <div className="hero__cta-wrap fade-in-up visible delay-3">
@@ -99,6 +109,13 @@ export default function HeroSection() {
 
             {/* Trust Bar */}
             <TrustBar />
+
+            {/* Scroll indicator */}
+            <div className="hero__scroll-hint">
+                <svg width="20" height="10" viewBox="0 0 20 10" fill="none">
+                    <path d="M1 1L10 9L19 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+            </div>
         </section>
     )
 }

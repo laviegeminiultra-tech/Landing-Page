@@ -17,27 +17,65 @@
     z-index: 1;
 }
 
+/* Context badge */
+.hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    color: var(--accent-blue);
+    margin-block-end: var(--space-3);
+    font-family: var(--font-hebrew);
+}
+
+.hero__badge-icon {
+    font-size: 14px;
+}
+
 .hero__title {
     margin-block-end: var(--space-3);
+}
+
+.hero__title-accent {
+    color: var(--accent-blue);
 }
 
 .hero__subtitle {
     font-family: var(--font-hebrew);
     font-weight: 300;
-    font-size: 20px;
+    font-size: 18px;
     color: var(--text-secondary);
     line-height: 1.7;
     margin-block-end: var(--space-4);
 }
 
-.hero__money {
-    margin-block-end: var(--space-3);
+/* Money highlight card */
+.hero__money-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 12px;
+    padding: 12px 24px;
+    margin-block-end: var(--space-4);
 }
 
 .hero__money-text {
     font-size: 28px;
     color: var(--accent-green);
     display: inline-block;
+}
+
+.hero__money-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-family: var(--font-hebrew);
+    text-align: start;
 }
 
 .hero__cta-wrap {
@@ -66,7 +104,7 @@
     justify-content: center;
     gap: 12px;
     padding: var(--space-2) var(--space-3);
-    margin-block-start: var(--space-5);
+    margin-block-start: var(--space-4);
     width: 100%;
     max-width: 700px;
     position: relative;
@@ -91,13 +129,28 @@
     font-size: 16px;
 }
 
+/* Scroll indicator */
+.hero__scroll-hint {
+    position: relative;
+    z-index: 1;
+    margin-block-start: auto;
+    padding-block-end: 16px;
+    color: rgba(255, 255, 255, 0.25);
+    animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+}
+
 /* ============================================
-   Mobile: everything present, dramatic contrast
+   Mobile
    ============================================ */
 @media (max-width: 768px) {
     .hero {
         min-height: auto;
-        padding-block: 72px 32px;
+        padding-block: 68px 24px;
         overflow-x: hidden;
         justify-content: flex-start;
     }
@@ -107,57 +160,84 @@
         max-width: 100%;
     }
 
-    /* ── Title: bold, clear, the anchor ── */
+    /* Badge */
+    .hero__badge {
+        font-size: 11px;
+        padding: 3px 10px;
+        margin-block-end: 14px;
+    }
+
+    .hero__badge-icon {
+        font-size: 12px;
+    }
+
+    /* Title: two lines, accent on second */
     .hero__title {
         font-size: 24px !important;
         line-height: 1.3;
-        margin-block-end: 16px;
+        margin-block-end: 12px;
     }
 
-    /* ── Subtitle: very quiet, supportive ── */
+    /* Subtitle: quiet and readable */
     .hero__subtitle {
         font-size: 13px;
         font-weight: 400;
-        line-height: 1.65;
-        color: rgba(255, 255, 255, 0.45);
-        margin-block-end: 24px;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.5);
+        margin-block-end: 16px;
+        letter-spacing: 0.01em;
     }
 
-    /* ── Money: green hook ── */
-    .hero__money {
-        margin-block-end: 24px;
+    /* Money card: compact on mobile */
+    .hero__money-card {
+        flex-direction: column;
+        gap: 2px;
+        padding: 10px 20px;
+        margin-block-end: 16px;
+        width: 100%;
+        border-radius: 10px;
     }
 
     .hero__money-text {
-        font-size: 16px;
-        white-space: normal;
-        line-height: 1.5;
+        font-size: 22px;
     }
 
-    /* ── CTA ── */
+    .hero__money-label {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.5);
+        text-align: center;
+    }
+
+    /* CTA */
     .hero__cta {
         width: 100%;
         font-size: 15px !important;
         height: 48px !important;
     }
 
-    /* ── Trust bar: right below CTA, compact ── */
+    /* Trust bar: single row */
     .hero__trust-bar {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px 0;
-        margin-block-start: 24px;
-        padding: 0 20px;
-        justify-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px 16px;
+        margin-block-start: 16px;
+        padding: 0;
     }
 
     .hero__trust-item {
-        font-size: 11px;
-        color: rgba(255, 255, 255, 0.4);
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.35);
     }
 
     .hero__trust-check {
         font-size: 10px;
-        color: rgba(16, 185, 129, 0.6);
+        color: rgba(16, 185, 129, 0.5);
+    }
+
+    /* Scroll hint */
+    .hero__scroll-hint {
+        margin-block-start: 20px;
+        padding-block-end: 0;
     }
 }
