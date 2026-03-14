@@ -173,9 +173,9 @@
 
     /* Title: two lines, accent on second */
     .hero__title {
-        font-size: 24px !important;
-        line-height: 1.3;
-        margin-block-end: 12px;
+        font-size: 28px !important;
+        line-height: 1.25;
+        margin-block-end: 14px;
     }
 
     /* Subtitle: quiet and readable */

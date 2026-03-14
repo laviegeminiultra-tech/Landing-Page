@@ -74,13 +74,7 @@ export default function HeroSection() {
     return (
         <section className="hero section" id="hero">
             <div className="hero__content container">
-                {/* Context badge */}
-                <div className="hero__badge fade-in-up visible">
-                    <span className="hero__badge-icon">🔍</span>
-                    <span>ביקורת חוזה שכירות מסחרית</span>
-                </div>
-
-                <h1 className="hero__title fade-in-up visible delay-1">
+                <h1 className="hero__title fade-in-up visible">
                     המשכיר שלכם
                     <br />
                     <span className="hero__title-accent">גובה יותר מדי.</span>
