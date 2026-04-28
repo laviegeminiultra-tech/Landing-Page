@@ -95,7 +95,7 @@ export default function HeroSection() {
                 </div>
 
                 <div className="hero__cta-wrap fade-in-up visible delay-3">
-                    <a href="#agitation" className="btn btn-primary hero__cta" id="hero-cta" onClick={(e) => { e.preventDefault(); document.getElementById('agitation')?.scrollIntoView({ behavior: 'smooth' }) }}>
+                    <a href="#agitation" className="btn btn-primary hero__cta" id="hero-cta">
                         גלו כמה אתם מפסידים ←
                     </a>
                 </div>
